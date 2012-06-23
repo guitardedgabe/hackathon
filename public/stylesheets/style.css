@@ -248,3 +248,91 @@ h2 {
 
 
 /* --- /Buckets --- */
+
+
+
+
+.dim_background{
+	height:100%;
+	width:100%;
+	position:fixed;
+	left:0;
+	top:0;
+	z-index:1 !important;
+	background:#333300;
+	opacity: 0.50;
+}
+
+.dim {
+	height:100%;
+	width:100%;
+	position:fixed;
+	top:100px;
+	z-index:2 !important;
+}
+.dim_container{
+	background:#DBDCDC;
+	margin:0 auto;
+	padding:50px 70px;
+	width:300px;
+	border-radius:20px;
+	height:450px;
+	position:relative;
+}
+.dim_container h2 {
+	font-family:"Amaranth";
+	display:inline-block;
+	font-size:50px;
+	color:#666666;
+	letter-spacing: -1px;
+}
+.dim_container p {
+	font-family:"Amaranth";
+	display:inline-block;
+	font-size:24px;
+	line-height:1.6em;
+	margin:20px 0 30px;
+	color:#666666;
+}
+.dim_cancel {
+	position:absolute;
+	top:5px;
+	right:5px;
+	background:url("../images/signup-cancel-sprite.jpg") no-repeat;
+	background-position:0 0;
+	width:40px;
+	height:40px;
+	cursor:pointer;
+}
+.dim_cancel:hover {
+	background-position:0 -40px;
+}
+.dim_or {
+	font-family:"Amaranth";
+	font-size:24px;
+	line-height:1.6em;
+	color:#666666;
+	text-align:center;
+	padding:0;
+}
+.dim_social {
+	padding:10px;
+	background:#EFEFF0;
+	box-shadow: 0px 2px 0px #bcbec0;
+	border-radius:10px;
+	text-align:center;
+	cursor:pointer;
+	margin:0;
+	width:auto;
+}
+.dim_social:hover {
+	background-color: #f9f9f9;
+}
+.dim_social_active {
+	margin:2px 0 -2px;
+	box-shadow:none !important;
+	background-color: #f9f9f9 !important;
+}
+.dim_social img {
+	margin:0 auto;
+}

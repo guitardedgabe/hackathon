@@ -8,6 +8,21 @@
 	<script src="lib/backbone.js"></script>
 </head>
 <body>
+	<div class="dim_background"></div>
+	<div class="dim">
+		<div class="dim_container">
+			<div class="dim_cancel"></div>
+			<h2>Sign up!</h2>
+			<p>You're 30 seconds away from joining the most fun community in Tampa.</p>
+			<div class="dim_social">
+				<img src="images/facebook-badge.png" />
+			</div>
+			<center><p class="dim_or">or</p></center>
+			<div class="dim_social">
+				<img src="images/twitter-badge.png" />
+			</div>
+		</div>
+	</div>
 	<div id="header">
 		<div id="header_container">
 			<div id="logo">
@@ -103,6 +118,23 @@ $(".bucket_votes img").live({
 		src = src.replace("-active.", ".");
 		$(this).attr("src", src);
 		$(this).removeClass("active");
+	}
+});
+
+
+$(".dim_cancel").click(function() {
+	$(".dim").remove();
+	$(".dim_background").remove();
+});
+$(".dim_social").live({
+	"mousedown" : function() {
+		$(this).addClass("dim_social_active");
+	},
+	"mouseout" : function() {
+		$(this).removeClass("dim_social_active");
+	},
+	"mouseup" : function() {
+		$(this).removeClass("dim_social_active");
 	}
 });
 </script>
