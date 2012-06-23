@@ -17,7 +17,6 @@ console.log(JSON.stringify(routes));
      Schema = mongoose.Schema;
  
 var routes = {
-    index: require('./routes').index,
     uploadPhoto: require('./routes/photo.js').uploadPhoto,
     addPhotoToExperience: require('./routes/photo.js').addPhotoToExperience,
     api: require('./routes/api.js').api,
@@ -96,7 +95,6 @@ app.configure('production', function(){
 
 // Routes
 
-app.get('/', routes.index);
 app.get('/tests', function(req, res){
   res.render('tests')
 });
@@ -114,6 +112,8 @@ app.post('/api/photos', routes.uploadPhoto, routes.addPhotoToExperience );
 //buckets
 app.get('/api/bucket/:id', routes.api.readBucket);
 
+app.get('/api/bucket', routes.api.readBucketlist);
+
 app.post('/api/bucket', routes.api.createBucket);
 
 app.put('/api/bucket/:id', routes.api.updateBucket);
@@ -123,8 +123,8 @@ app.delete('/api/bucket/:id', routes.api.deleteBucket);
 /* upvote and downvote bucket
  */
 
-app.post('/api/bucket/upvote/:id', routes.api.bucketUpvote)
-app.post('/api/bucket/downvote/:id', routes.api.bucketDownvote)
+app.get('/api/bucket/upvote/:id', routes.api.upVoteBucket)
+app.get('/api/bucket/downvote/:id', routes.api.downVoteBucket)
 
 
 //experiences
@@ -139,8 +139,8 @@ app.delete('/api/experience/:id', routes.api.deleteExperience);
 /* upvote and downvote experiences
  */
 
-app.post('/api/xp/upvote/:id', routes.api.exexperiencevote);
-app.post('/api/xp/downvote/:id', routes.api.experienceDownvote);
+app.post('/api/experience/upvote/:id', routes.api.upVoteExperience);
+app.post('/api/experience/downvote/:id', routes.api.downVoteExperience);
 
 //user api functions
 app.get('/api/user/:id', routes.api.readUser);

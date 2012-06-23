@@ -4,10 +4,12 @@ $(function() {
 
         idAttribute: "_id",
         
-        defaults: {
-            date: new Date(),
-            upVote: 0,
-            downVote: 0
+        defaults: function() {
+			return {
+				date: new Date(),
+				upVote: 0,
+				downVote: 0
+			};
         },
 
         initialize: function() {
@@ -53,16 +55,25 @@ $(function() {
         },
 
         upVote: function() {
-            this.save({ 'upVotes': this.upVotes + 1});
+            //this.save({ 'upVotes': this.upVotes + 1});
+            var model = this.model;
+            $.get('/api/experience/upvote/'+this.id, function(data){
+                console.log('upvoted post the data returned was',data);
+                model.fetch();
+            });
+
         },
 
         downVote: function() {
-            this.save({ 'downVotes': this.downVotes + 1});
+            var model = this.model;
+            $.get('/api/experience/downvote/'+this.id, function(data){
+                console.log('downvoted post the data returned was',data);
+                model.fetch();
+            });
         }
     });
     
     Bucket = Backbone.Model.extend({
-
         url: function(){
             if ( this.id ) return "/api/bucket/"+this.id;
             return "/api/bucket";
@@ -70,10 +81,12 @@ $(function() {
 
         idAttribute: "_id",
         
-        defaults: {
-            upVotes: 0,
-            downVotes: 0
-        },
+        defaults: function() {
+			return {
+				upVotes: 0,
+				downVotes: 0
+        	};
+		},
 
         addPicture: function(picture) {
             var pictures = this.get('pictures');
@@ -113,22 +126,34 @@ $(function() {
         },
 
         upVote: function() {
-            this.save({ 'upVotes': this.upVotes + 1 });
+            //this.save({ 'upVotes': this.upVotes + 1});
+            var model = this;
+            $.get('/api/bucket/upvote/'+this.id, function(data){
+                model.fetch();
+            });
+
         },
 
         downVote: function() {
-            this.save({ 'downVotes': this.downVotes + 1 });
+            //this.save({ 'downVotes': this.downVotes + 1});
+            var model = this;
+            $.get('/api/bucket/downvote/'+this.id, function(data){
+                console.log('downvoted post the data returned was',data);
+                model.fetch();
+            });
         }
+
     });
    
     User = Backbone.Model.extend({
         
+        defaults: function() {
+			return {
+				points: 0,
+				pic: '' /*TODO: add string to empty profile picture resource*/
+        	};
+		},
         idAttribute: "_id",
-
-        defaults: {
-            points: 0,
-            pic: '' /*TODO: add string to empty profile picture resource*/
-        },
 
         initialize: function() {
             if (!this.get('pic')) {
@@ -195,4 +220,29 @@ $(function() {
             this.save({ 'posts': modifiedPosts });
         }
     });
+
+
+    /* 
+     *
+     * Collections 
+     *
+     */
+
+
+    BucketList =  Backbone.Collection.extend({
+        url: '/api/bucket',
+
+        comparator: function(bucket){
+            return -( bucket.get('upVotes') - bucket.get('downVotes') );
+        },
+
+        model:Bucket
+    });
+    
+    ExperienceCollection =  Backbone.Collection.extend({
+        url: '/api/bucket',
+        model:Experience
+    });
+
+
 });

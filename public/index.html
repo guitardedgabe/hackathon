@@ -6,6 +6,9 @@
 	<script src="lib/jquery.js"></script>
 	<script src="lib/underscore.js"></script>
 	<script src="lib/backbone.js"></script>
+	<script src="js/Main.js"></script>
+	<script src="js/view/BucketView.js"></script>
+	<script src="js/view/BucketListView.js"></script>
 </head>
 <body>
 	<div class="dim_background"></div>
@@ -39,6 +42,7 @@
 		</div>
 	</div>
 	<div id="body">
+
 		<div id="body_container">
 			<div class="bucket_container">
 				<div class="bucket_votes">
@@ -101,10 +105,32 @@
 						<a href="#"><img src="images/party1.jpg" /></a>
 					</div>
 				</div>
+	</div>
+</body>
+
+<!-- Templates -->
+<script type="text/template" id="bucketView-template">
+	<div class="bucket_container">
+		<div class="bucket_votes">
+			<div class="bucket_votes_score"><%= upVotes-downVotes %></div>
+			<div class="bucket_votes_images">
+				<img src="images/upvote.png" id="upVote" />
+				<img src="images/downvote.png" id="downVote" />
+			</div>
+		</div>	
+		<div class="bucket_info">
+            <div class="bucket_name"><h2><%= title %></h2></div>
+			<div class="bucket_photos">
+				<!--<img src="images/party1.jpg" height="100px" />
+				<img src="images/party1.jpg" height="100px" />
+				<img src="images/party1.jpg" height="20px" />
+				<img src="images/party1.jpg" height="20px" />-->
 			</div>
 		</div>
 	</div>
-</body>
+</script>
+<!-- End Templates -->
+
 <script>
 $(".bucket_votes img").live({
 	"mouseenter" : function() {
