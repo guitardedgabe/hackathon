@@ -261,6 +261,7 @@ h2 {
 	z-index:1 !important;
 	background:#333300;
 	opacity: 0.50;
+	display:none;
 }
 
 .dim {
@@ -269,6 +270,7 @@ h2 {
 	position:fixed;
 	top:100px;
 	z-index:2 !important;
+	display:none;
 }
 .dim_container{
 	background:#DBDCDC;
