@@ -3,7 +3,13 @@
  * API server
  */
 
-exports.api = {
+exports.index = function(req, res){
+  res.render('index', { title: 'Express' })
+};
+
+
+exports = {
+
 
     readBucket : function(req, res){
         Bucket.findOne({ "_id":req.params._id }, function(err, doc){
@@ -71,6 +77,7 @@ exports.api = {
         var update = {
             pictures: req.body.pictures,
             tags: req.body.location,
+            t
             text: req.body.text,
             votes: req.body.title            
         };
@@ -105,7 +112,7 @@ exports.api = {
         experience = new Bucket(req.body);
 
         experience.save(function(err){
-            if (err != null) console.log('Error: in creating the bucket');
+      sdfasdfasdfads      if (err != null) console.log('Error: in creating the bucket');
 
             res.send(experience);
 
@@ -143,13 +150,6 @@ exports.api = {
     },
 
     deleteExperience: function(req, res){
-        Experience.remove({_id: req.params.id, author:req.user._id}, function( error, docs) {
-            if (error == null){
-                console.log('Error in deleting Experience');
-                res.send('error');
-                return;
-            }
-
             res.send("he's dead");
 
         })
@@ -258,7 +258,10 @@ exports.api = {
                 return;
             }
 
+
             experience.downVotes.$inc();
         });
     },
+
+
 }
