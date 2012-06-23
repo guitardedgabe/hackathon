@@ -48,6 +48,14 @@ $(function() {
                 }
             }
             this.save({ 'tags': updatedTags });
+        },
+
+        upVote: function() {
+            this.save({ 'upVotes': this.upVotes + 1});
+        },
+
+        downVote: function() {
+            this.save({ 'downVotes': this.downVotes + 1});
         }
     });
     
