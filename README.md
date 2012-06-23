@@ -1,19 +1,22 @@
 Models
+======
 
-- Bucket
+Bucket
+------
   - Author
   - Pictures
   - Location
   - Text
   - Votes
   - Expresiences
-  - COmments
+  - Comments
   - Title
   - Date/Time
   - Category
 
 
-- Experience 
+Experience 
+----------
   - Author
   - Picture :[Links]
   - Tags : [People]
@@ -22,10 +25,10 @@ Models
   - Votes
 
 
-- User
+User
+----
   - Posts : [Experiences]
   - Points
   - Pics
   - Todo : [Buckets]
   - Buckets Added : [Buckets]
-  - Friends
