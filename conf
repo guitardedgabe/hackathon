@@ -1,6 +1,10 @@
 module.exports =  conf = {
     twit: {
-    consumerKey: 'Y0ovR455mI2jk6iDg7ew'
-    , consumerSecret: 'jETuuUf0TRUxqB3goz1EZBSSGr01qelTrG4pL44kf5Q'
-    }   
+        consumerKey: 'Y0ovR455mI2jk6iDg7ew'
+        , consumerSecret: 'jETuuUf0TRUxqB3goz1EZBSSGr01qelTrG4pL44kf5Q'
+    },
+    facebook: {
+        appId: '298711390225395',
+        appSecret: 'a2c48875a24d5abbb9d81b1eac806100'
+    }
 }
