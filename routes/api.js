@@ -10,7 +10,78 @@ exports.index = function(req, res){
 
 exports = {
 
-    bucketRead
+
+    read : function(type){
+
+        var mongoItem;
+
+        switch(type) {
+            case 'bucket':
+                mongoItem = Bucket;
+                break;
+            case 'xp':
+                mongoItem = Xp;
+                break;
+            case 'user':
+                mongoItem = User;
+                break;
+                
+            default:
+                console.log('Error: there was an error with the api call')
+
+        }
+
+        return function(req, res){
+            mongoItem.findOne({ "_id":req.params._id }, function(err, doc){
+            })
+
+        }
+
+
+    },
+
+    readBucket : function(req, res){
+        Bucket.findOne({ "_id":req.params._id }, function(err, doc){
+            if ( error != null ) {
+                res.send(doc);
+            }
+        })
+    },
+
+    readXp : function(req, res){
+        Xp.findOne({ "_id":req.params._id }, function(err, doc){
+            if ( error != null ) {
+                res.send(doc);
+            }
+        })
+    },
+
+    readUser : function(req, res){
+        User.findOne({ "_id":req.params._id }, function(err, doc){
+            if ( error != null ) {
+                res.send(doc);
+            }
+        })
+    },
+
+    updateBucket : function(req, res){
+
+        var update = {
+            pictures: req.body.pictures,
+            location: req.body.location,
+            text: req.body.text,
+            
+        }
+
+        Bucket.findOne({ "_id":req.params._id, "author":req.user._id }, function(err, doc){
+            if ( error != null ) {
+                res.send(doc);
+            }
+        })
+    },
+
+
+
 
 
 }
