@@ -85,6 +85,29 @@ app.get('/tests', function(req, res){
 });
 
 
+
+app.post('/api/photos', function(req, res) {
+
+  var serverPath = '/images/' + req.files.userPhoto.name;
+
+console.log(req.files.userPhoto.name);
+  require('fs').rename(
+    req.files.userPhoto.path,
+    '/tmp' + serverPath,
+    function(error) {
+      if(error) {
+        res.send({
+          error: 'Ah crap! Something bad happened'
+        });
+        return;
+      }
+
+      res.send({
+        path: serverPath
+      });
+    }
+  );
+});
 /* API SHiT yo
  *
  *
