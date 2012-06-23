@@ -24,7 +24,7 @@ exports.api  = {
         })
     },
 
-    readBuckets : function(req, res){
+    readBucketlist : function(req, res){
         Bucket.find({}, function(err, docs){
             if ( err != null ) {
                 res.send('error');
@@ -49,6 +49,7 @@ exports.api  = {
         User.findOne({ "_id":req.params._id }, function(err, doc){
             if ( error != null ) {
                 res.send(doc);
+                return
             }
         })
     },
@@ -62,9 +63,10 @@ exports.api  = {
             title: req.body.title            
         };
 
-        Bucket.update({ "_id":req.params._id, "author":req.user._id }, update, function(err, doc){
-            if ( error == null ) {
+        Bucket.update({ "_id":req.params._id, /*"author":req.user._id*/ }, update, function(err, doc){
+            if ( err != null ) {
                 res.send('error dude');
+                return;
             }
 
             if (numAffected <= 1) res.send(update);
@@ -223,72 +225,81 @@ exports.api  = {
      * bucket id
      */
     upVoteBucket: function(req, res){
-        var bucketID = req.body.bucketId;
+        var bucketID = req.params.id;
         if (typeof(bucketID) == 'undefined' ) {
-            res.send('wrong parameters. parameters should be {bucketId: 123}');
+            res.send('wrong parameters');
             return;
         }
-        Bucket.findOne({_id: bucketID}, function ( err, bucket){
-            if ( err == null ) {
+
+        var update = { $inc : { upVotes : 1 } };
+
+        Bucket.update({_id:bucketID}, update, function ( err, numAffected){
+            if ( err != null ) {
                 console.log("Error: adding experience to bucket");
                 res.send('error');
                 return;
             }
-
-            bucket.upVotes.$inc();
+            res.send('success');
         });
     },
 
     downVoteBucket: function(req, res){
-        var bucketID = req.body.bucketId;
+        var bucketID = req.params.id;
         if (typeof(bucketID) == 'undefined' ) {
-            res.send('wrong parameters. parameters should be {bucketId: 123}');
+            res.send('wrong parameters');
             return;
         }
-        Bucket.findOne({_id: bucketID}, function ( err, bucket){
-            if ( err == null ) {
+        var update = { $inc : { downVotes : 1 } };
+
+        Bucket.update({_id:bucketID}, update, function ( err, numAffected){
+            if ( err != null ) {
+                console.log("Error: adding experience to bucket");
+                res.send('error');
+                return;
+            }
+            res.send('success');
+        });
+    },
+
+    upVoteExperience: function(req, res){
+        var experienceID = req.params.id;
+        if (typeof(experienceID) == 'undefined' ) {
+            res.send('wrong parameters. parameters should be {experienceId: 123}');
+            return;
+        }
+
+        var update = { $inc : { upVote : 1 } };
+
+        Experience.update({_id:bucketID}, update, function ( err, numAffected){
+            if ( err != null ) {
+                console.log("Error: adding experience to bucket");
+                res.send('error');
+                return;
+            }
+            res.send('success');
+        });
+    },
+
+    downVoteExperience: function(req, res){
+        var experienceID = req.params.id;
+        if (typeof(experienceID) == 'undefined' ) {
+            res.send('wrong parameters. parameters should be {experienceId: 123}');
+            return;
+        }
+
+        var update = { $inc : { downVotes : 1 } };
+
+        Experience.update({_id:bucketID}, update, function ( err, numAffected){
+            if ( err != null ) {
                 console.log("Error: adding experience to bucket");
                 res.send('error');
                 return;
             }
 
-            bucket.downVotes.$inc();
+            res.send('success');
+
         });
-    },
 
-    upVoteExperience: function(req, res){
-        var experienceID = req.body.experienceId;
-        if (typeof(experienceID) == 'undefined' ) {
-            res.send('wrong parameters. parameters should be {experienceId: 123}');
-            return;
-        }
-        Experience.findOne({_id: experienceID}, function ( err, experience){
-            if ( err == null ) {
-                console.log("Error: adding experience to experience");
-                res.send('error');
-                return;
-            }
-
-            experience.upVotes.$inc();
-        });
-    },
-
-    downVoteExperience: function(req, res){
-        var experienceID = req.body.experienceId;
-        if (typeof(experienceID) == 'undefined' ) {
-            res.send('wrong parameters. parameters should be {experienceId: 123}');
-            return;
-        }
-        Experience.findOne({_id: experienceID}, function ( err, experience){
-            if ( err == null ) {
-                console.log("Error: adding experience to experience");
-                res.send('error');
-                return;
-            }
-
-
-            experience.downVotes.$inc();
-        });
     },
 
 

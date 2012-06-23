@@ -55,11 +55,21 @@ $(function() {
         },
 
         upVote: function() {
-            this.save({ 'upVotes': this.upVotes + 1});
+            //this.save({ 'upVotes': this.upVotes + 1});
+            var model = this.model;
+            $.get('/api/experience/upvote/'+this.id, function(data){
+                console.log('upvoted post the data returned was',data);
+                model.fetch();
+            });
+
         },
 
         downVote: function() {
-            this.save({ 'downVotes': this.downVotes + 1});
+            var model = this.model;
+            $.get('/api/experience/downvote/'+this.id, function(data){
+                console.log('downvoted post the data returned was',data);
+                model.fetch();
+            });
         }
     });
     
@@ -116,12 +126,23 @@ $(function() {
         },
 
         upVote: function() {
-            this.save({ 'upVotes': this.upVotes + 1 });
+            //this.save({ 'upVotes': this.upVotes + 1});
+            var model = this;
+            $.get('/api/bucket/upvote/'+this.id, function(data){
+                model.fetch();
+            });
+
         },
 
         downVote: function() {
-            this.save({ 'downVotes': this.downVotes + 1 });
+            //this.save({ 'downVotes': this.downVotes + 1});
+            var model = this;
+            $.get('/api/bucket/downvote/'+this.id, function(data){
+                console.log('downvoted post the data returned was',data);
+                model.fetch();
+            });
         }
+
     });
    
     User = Backbone.Model.extend({
@@ -199,5 +220,29 @@ $(function() {
             this.save({ 'posts': modifiedPosts });
         }
     });
+
+
+    /* 
+     *
+     * Collections 
+     *
+     */
+
+
+    BucketList =  Backbone.Collection.extend({
+        url: '/api/bucket',
+
+        comparator: function(bucket){
+            return -( bucket.get('upVotes') - bucket.get('downVotes') );
+        },
+
+        model:Bucket
+    });
+    
+    ExperienceCollection =  Backbone.Collection.extend({
+        url: '/api/bucket',
+        model:Experience
+    });
+
 
 });

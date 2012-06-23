@@ -12,10 +12,6 @@ $(function(){
     });
 
 
-    Bucketlist =  Backbone.Collection.extend({
-        url: '/api/bucket',
-        model:Bucket
-    });
 
     //buckets = new Bucketlist();
 
@@ -33,6 +29,7 @@ $(function(){
     bucket.trigger('test', 'update')
 
     //test reading
+    bucket.sort;
     bucket.fetch();
     bucket.trigger('test','read')
 

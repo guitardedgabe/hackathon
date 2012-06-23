@@ -3,7 +3,7 @@ $(function() {
 		
 		tagName: "li",
 
-		template: _.template($("#item_template").html()),
+		template: _.template($("#bucketView-template").html()),
 
 		events: {
 			"click #upVote": "upVote",
@@ -11,10 +11,6 @@ $(function() {
 		},
 
 		initialize: function() {
-			// Bind the view to its model
-			if (!this.model) {
-				this.model = new Bucket();
-			}
 
 			this.model.bind("change", this.render, this);
 		},
@@ -32,5 +28,6 @@ $(function() {
 			this.model.downVote();
 		}
 	});
-	
+
+    
 });
