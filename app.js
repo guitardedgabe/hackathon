@@ -4,16 +4,23 @@
  */
 
 var express = require('express')
-  , routes = require('./routes')
   , _u = require('./public/lib/underscore.js')
   , MongoStore = require('connect-mongo')(express)
+  , fs = require('fs')
   , util = require('util');
+
+console.log(JSON.stringify(routes));
  
  var mongoose = require('mongoose'),
      mongooseAuth = require('mongoose-auth'),
      conf = require('./conf'),
      Schema = mongoose.Schema;
  
+var routes = {
+    index: require('./routes').index,
+    uploadPhoto: require('./routes/photo.js').uploadPhoto,
+    api: require('./routes/api.js').api,
+}
 
 var app = module.exports = express.createServer();
 
@@ -52,7 +59,8 @@ User = mongoose.model('User',UserSchema);
 
 app.configure(function(){
   app.set('views', __dirname + '/views');
-  app.set('view engine', 'jade');
+  app.set('view engine', 'ejs');
+  app.register('.html',require('ejs'));
   app.use(express.cookieParser());
     app.use(express.session({
       "secret":"thisissupersecretlol",
@@ -132,6 +140,14 @@ app.post('/api/user', routes.createUser);
 app.put('/api/user/:id', routes.updateUser);
 
 //app.delete('/api/user/:id', routes.deleteUser);
+
+//photo upload
+app.post('/upload/photo', routes.uploadPhoto);
+
+app.get('/upload/photo', function(req, res){
+    res.render('photo.html', {layout: false});
+
+});
 
 
 

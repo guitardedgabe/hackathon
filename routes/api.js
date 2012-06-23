@@ -3,13 +3,7 @@
  * API server
  */
 
-exports.index = function(req, res){
-  res.render('index', { title: 'Express' })
-};
-
-
-exports = {
-
+exports.api = {
 
     readBucket : function(req, res){
         Bucket.findOne({ "_id":req.params._id }, function(err, doc){
@@ -77,7 +71,6 @@ exports = {
         var update = {
             pictures: req.body.pictures,
             tags: req.body.location,
-            t
             text: req.body.text,
             votes: req.body.title            
         };
@@ -112,7 +105,7 @@ exports = {
         experience = new Bucket(req.body);
 
         experience.save(function(err){
-      sdfasdfasdfads      if (err != null) console.log('Error: in creating the bucket');
+            if (err != null) console.log('Error: in creating the bucket');
 
             res.send(experience);
 
@@ -268,6 +261,4 @@ exports = {
             experience.downVotes.$inc();
         });
     },
-
-
 }
