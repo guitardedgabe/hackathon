@@ -25,7 +25,7 @@ var UserSchema = new Schema({
 	pic: String,
 	todo: [BucketSchema],
 	bucketsAdded: [BucketSchema]
-}),
+});
 
 UserSchema.plugin(mongooseAuth, {
     everymodule: {
@@ -80,6 +80,9 @@ app.configure('production', function(){
 // Routes
 
 app.get('/', routes.index);
+app.get('/tests', function(req, res){
+  res.render('tests')
+});
 
 
 /* API SHiT yo
@@ -89,13 +92,13 @@ app.get('/', routes.index);
 
 
 //buckets
-app.get('/api/bucket/:id', routes.read("bucket"));
+app.get('/api/bucket/:id', routes.readBucket);
 
-app.post('/api/bucket', routes.create("bucket"));
+app.post('/api/bucket', routes.createBucket);
 
-app.put('/api/bucket/:id', routes.update("bucket"));
+app.put('/api/bucket/:id', routes.updateBucket);
 
-app.delete('/api/bucket/:id', routes.delete("bucket"));
+app.delete('/api/bucket/:id', routes.deleteBucket);
 
 /* upvote and downvote bucket
  */
@@ -105,13 +108,13 @@ app.post('/api/bucket/downvote/:id', routes.bucketDownvote)
 
 
 //experiences
-app.get('/api/xp/:id', routes.read("xp"));
+app.get('/api/xp/:id', routes.readExperience);
 
-app.post('/api/xp', routes.create("xp"));
+app.post('/api/xp', routes.createExperience);
 
-app.put('/api/xp/:id', routes.update("xp"));
+app.put('/api/xp/:id', routes.updateExperience);
 
-app.delete('/api/xp/:id', routes.delete("xp"));
+app.delete('/api/xp/:id', routes.deleteExperience);
 
 /* upvote and downvote experiences
  */
@@ -122,20 +125,21 @@ app.post('/api/xp/downvote/:id', routes.xpDownvote);
 
 
 //user api functions
-app.get('/api/user/:id', routes.read("user"));
+app.get('/api/user/:id', routes.readUser);
 
-app.post('/api/user', routes.create("user"));
+app.post('/api/user', routes.createUser);
 
-app.put('/api/user/:id', routes.update("user"));
+app.put('/api/user/:id', routes.updateUser);
 
-app.delete('/api/user/:id', routes.delete("user"));
+//app.delete('/api/user/:id', routes.deleteUser);
+
 
 
 /************ Models ************/
 // Buckets
 var BucketSchema = new Schema({
-	author: ObjectId,
-	category: String
+	author: Schema.ObjectId,
+	category: String,
 	location: String,
 	pictures: [String],
 	experiences: [ExperienceSchema],
@@ -149,7 +153,7 @@ Bucket = mongoose.model('Bucket', BucketSchema);
 
 // Experience
 var ExperienceSchema = new Schema ({
-	author: ObjectId,
+	author: Schema.ObjectId,
 	date: Date,
 	pictures: [String],
 	tags: [UserSchema],
