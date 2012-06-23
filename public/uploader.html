@@ -6,9 +6,15 @@
 	<script src="lib/jquery.js"></script>
 	<script src="lib/underscore.js"></script>
 	<script src="lib/backbone.js"></script>
+	<script src="lib/jquery.form.js"></script>
 </head>
 <body>
+<form id="uploadForm" enctype="multipart/form-data" action="/api/photos" method="post"> 
+	<input type="file" id="userPhotoInput" name="userPhoto" />
+ </form>
 
+<span id="status" />
+<img id="uploadedImage" />
 
 </body>
 <script>
