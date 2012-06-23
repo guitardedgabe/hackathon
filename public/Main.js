@@ -1,9 +1,56 @@
 $(function() {
 
-    var Todo = Backbone.Model.extend({
+    var Experience = Backbone.Model.extend({
         
-    });
+        defaults: {
+            date: new Date(),
+            upVote: 0,
+            downVote: 0
+        },
 
+        initialize: function() {
+            if (!this.get('date')) {
+                this.save({ 'date': this.defaults.date });
+            }
+        },
+
+        addPicture: function(picture) {
+            var pictures = this.get('pictures');
+            pictures.push(picture);
+            this.save({ 'pictures': pictures });
+        },
+        
+        removePicture: function(picture) {
+            var pictures = this.get('pictures');
+            var updatedPictures = [];
+
+            for (var i=0; i<pictures.length; i++) {
+                if (pictures[i] != picture) {
+                    updatedPictures.push(pictures[i]);
+                }
+            }
+            this.save({ 'pictures': updatedPictures });
+        },
+        
+        addTag: function(tag) {
+            var tags = this.get('tags');
+            tags.push(tag);
+            this.save({ 'tags': tags });
+        },
+        
+        removeTag: function(tag) {
+            var tags = this.get('tags');
+            var updatedTags = [];
+
+            for (var i=0; i<tags.length; i++) {
+                if (tags[i] != tag) {
+                    updatedTags.push(tags[i]);
+                }
+            }
+            this.save({ 'tags': updatedTags });
+        }
+    });
+    
     var Bucket = Backbone.Model.extend({
         
         defaults: {
