@@ -20,8 +20,12 @@ var app = module.exports = express.createServer();
 mongoose.connect('mongodb://localhost/tampa');
 
 var UserSchema = new Schema({
+	post: [ExperienceSchema],
+	points: Number,
+	pic: String,
+	todo: [BucketSchema],
+	bucketsAdded: [BucketSchema]
 }),
-    User;
 
 UserSchema.plugin(mongooseAuth, {
     everymodule: {
@@ -76,6 +80,85 @@ app.configure('production', function(){
 // Routes
 
 app.get('/', routes.index);
+
+
+/* API SHiT yo
+ *
+ *
+ */
+
+
+//buckets
+app.get('/api/bucket/:id', routes.read("bucket"));
+
+app.post('/api/bucket', routes.create("bucket"));
+
+app.put('/api/bucket/:id', routes.update("bucket"));
+
+app.delete('/api/bucket/:id', routes.delete("bucket"));
+
+/* upvote and downvote bucket
+ */
+
+app.post('/api/bucket/upvote/:id', routes.bucketUpvote)
+app.post('/api/bucket/downvote/:id', routes.bucketDownvote)
+
+
+//experiences
+app.get('/api/xp/:id', routes.read("xp"));
+
+app.post('/api/xp', routes.create("xp"));
+
+app.put('/api/xp/:id', routes.update("xp"));
+
+app.delete('/api/xp/:id', routes.delete("xp"));
+
+/* upvote and downvote experiences
+ */
+
+app.post('/api/xp/upvote/:id', routes.xpUpvote);
+app.post('/api/xp/downvote/:id', routes.xpDownvote);
+
+
+
+//user api functions
+app.get('/api/user/:id', routes.read("user"));
+
+app.post('/api/user', routes.create("user"));
+
+app.put('/api/user/:id', routes.update("user"));
+
+app.delete('/api/user/:id', routes.delete("user"));
+
+
+/************ Models ************/
+// Buckets
+var BucketSchema = new Schema({
+	author: ObjectId,
+	category: String
+	location: String,
+	pictures: [String],
+	experiences: [ExperienceSchema],
+	text: String,
+	title: String,
+	upVotes: Number,
+	downVotes: Number
+});
+
+Bucket = mongoose.model('Bucket', BucketSchema);
+
+// Experience
+var ExperienceSchema = new Schema ({
+	author: ObjectId,
+	date: Date,
+	pictures: [String],
+	tags: [UserSchema],
+	text: String,
+	upVote: Number,
+	downVote: Number
+});
+
+Experience = mongoose.model('Experience', ExperienceSchema);
 
 mongooseAuth.helpExpress(app);
 
