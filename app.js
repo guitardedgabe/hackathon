@@ -138,7 +138,7 @@ var BucketSchema = new Schema({
 	category: String
 	location: String,
 	pictures: [String],
-	Experiences: [ExperienceSchema],
+	experiences: [ExperienceSchema],
 	text: String,
 	title: String,
 	upVotes: Number,
