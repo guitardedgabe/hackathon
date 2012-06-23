@@ -4,16 +4,24 @@
  */
 
 var express = require('express')
-  , routes = require('./routes')
   , _u = require('./public/lib/underscore.js')
   , MongoStore = require('connect-mongo')(express)
+  , fs = require('fs')
   , util = require('util');
+
+console.log(JSON.stringify(routes));
  
  var mongoose = require('mongoose'),
      mongooseAuth = require('mongoose-auth'),
      conf = require('./conf'),
      Schema = mongoose.Schema;
  
+var routes = {
+    index: require('./routes').index,
+    uploadPhoto: require('./routes/photo.js').uploadPhoto,
+    addPhotoToExperience: require('./routes/photo.js').addPhotoToExperience,
+    api: require('./routes/api.js').api,
+}
 
 var app = module.exports = express.createServer();
 
@@ -61,6 +69,7 @@ User = mongoose.model('User',UserSchema);
 app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
+  app.register('.html',require('jade'));
   app.use(express.cookieParser());
     app.use(express.session({
       "secret":"thisissupersecretlol",
@@ -93,6 +102,9 @@ app.get('/tests', function(req, res){
 });
 
 
+
+app.post('/api/photos', routes.uploadPhoto, routes.addPhotoToExperience );
+
 /* API SHiT yo
  *
  *
@@ -116,21 +128,19 @@ app.post('/api/bucket/downvote/:id', routes.bucketDownvote)
 
 
 //experiences
-app.get('/api/xp/:id', routes.readExperience);
+app.get('/api/experience/:id', routes.readExperience);
 
-app.post('/api/xp', routes.createExperience);
+app.post('/api/experience', routes.createExperience);
 
-app.put('/api/xp/:id', routes.updateExperience);
+app.put('/api/experience/:id', routes.updateExperience);
 
-app.delete('/api/xp/:id', routes.deleteExperience);
+app.delete('/api/experience/:id', routes.deleteExperience);
 
 /* upvote and downvote experiences
  */
 
 app.post('/api/xp/upvote/:id', routes.xpUpvote);
 app.post('/api/xp/downvote/:id', routes.xpDownvote);
-
-
 
 //user api functions
 app.get('/api/user/:id', routes.readUser);
@@ -140,6 +150,11 @@ app.post('/api/user', routes.createUser);
 app.put('/api/user/:id', routes.updateUser);
 
 //app.delete('/api/user/:id', routes.deleteUser);
+
+app.get('/upload/photo', function(req, res){
+    res.render('photo.html', {layout: false});
+
+});
 
 
 
