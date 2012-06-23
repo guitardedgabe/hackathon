@@ -1,0 +1,6 @@
+module.exports =  conf = {
+    twit: {
+    consumerKey: 'Y0ovR455mI2jk6iDg7ew'
+    , consumerSecret: 'jETuuUf0TRUxqB3goz1EZBSSGr01qelTrG4pL44kf5Q'
+    }   
+}
