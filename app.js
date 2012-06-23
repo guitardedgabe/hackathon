@@ -20,8 +20,12 @@ var app = module.exports = express.createServer();
 mongoose.connect('mongodb://localhost/tampa');
 
 var UserSchema = new Schema({
+	post: [ExperienceSchema],
+	points: Number,
+	pic: String,
+	todo: [BucketSchema],
+	bucketsAdded: [BucketSchema]
 }),
-    User;
 
 UserSchema.plugin(mongooseAuth, {
     everymodule: {
@@ -127,9 +131,34 @@ app.put('/api/user/:id', routes.update(user));
 app.delete('/api/user/:id', routes.delete(user));
 
 
+/************ Models ************/
+// Buckets
+var BucketSchema = new Schema({
+	author: ObjectId,
+	category: String
+	location: String,
+	pictures: [String],
+	Experiences: [ExperienceSchema],
+	text: String,
+	title: String,
+	upVotes: Number,
+	downVotes: Number
+});
 
+Bucket = mongoose.model('Bucket', BucketSchema);
 
+// Experience
+var ExperienceSchema = new Schema ({
+	author: ObjectId,
+	date: Date,
+	pictures: [String],
+	tags: [UserSchema],
+	text: String,
+	upVote: Number,
+	downVote: Number
+});
 
+Experience = mongoose.model('Experience', ExperienceSchema);
 
 mongooseAuth.helpExpress(app);
 
