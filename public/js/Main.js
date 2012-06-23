@@ -1,6 +1,8 @@
 $(function() {
 
     Experience = Backbone.Model.extend({
+
+        idAttribute: "_id",
         
         defaults: function() {
 			return {
@@ -62,6 +64,12 @@ $(function() {
     });
     
     Bucket = Backbone.Model.extend({
+        url: function(){
+            if ( this.id ) return "/api/bucket/"+this.id;
+            return "/api/bucket";
+        },
+
+        idAttribute: "_id",
         
         defaults: function() {
 			return {
@@ -124,6 +132,7 @@ $(function() {
 				pic: '' /*TODO: add string to empty profile picture resource*/
         	};
 		},
+        idAttribute: "_id",
 
         initialize: function() {
             if (!this.get('pic')) {

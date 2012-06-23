@@ -4,16 +4,24 @@
  */
 
 var express = require('express')
-  , routes = require('./routes')
   , _u = require('./public/lib/underscore.js')
   , MongoStore = require('connect-mongo')(express)
+  , fs = require('fs')
   , util = require('util');
+
+console.log(JSON.stringify(routes));
  
  var mongoose = require('mongoose'),
      mongooseAuth = require('mongoose-auth'),
      conf = require('./conf'),
      Schema = mongoose.Schema;
  
+var routes = {
+    index: require('./routes').index,
+    uploadPhoto: require('./routes/photo.js').uploadPhoto,
+    addPhotoToExperience: require('./routes/photo.js').addPhotoToExperience,
+    api: require('./routes/api.js').api,
+}
 
 var app = module.exports = express.createServer();
 
@@ -53,6 +61,7 @@ User = mongoose.model('User',UserSchema);
 app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
+  app.register('.html',require('jade'));
   app.use(express.cookieParser());
     app.use(express.session({
       "secret":"thisissupersecretlol",
@@ -85,6 +94,9 @@ app.get('/tests', function(req, res){
 });
 
 
+
+app.post('/api/photos', routes.uploadPhoto, routes.addPhotoToExperience );
+
 /* API SHiT yo
  *
  *
@@ -92,46 +104,49 @@ app.get('/tests', function(req, res){
 
 
 //buckets
-app.get('/api/bucket/:id', routes.readBucket);
+app.get('/api/bucket/:id', routes.api.readBucket);
 
-app.post('/api/bucket', routes.createBucket);
+app.post('/api/bucket', routes.api.createBucket);
 
-app.put('/api/bucket/:id', routes.updateBucket);
+app.put('/api/bucket/:id', routes.api.updateBucket);
 
-app.delete('/api/bucket/:id', routes.deleteBucket);
+app.delete('/api/bucket/:id', routes.api.deleteBucket);
 
 /* upvote and downvote bucket
  */
 
-app.post('/api/bucket/upvote/:id', routes.bucketUpvote)
-app.post('/api/bucket/downvote/:id', routes.bucketDownvote)
+app.post('/api/bucket/upvote/:id', routes.api.bucketUpvote)
+app.post('/api/bucket/downvote/:id', routes.api.bucketDownvote)
 
 
 //experiences
-app.get('/api/xp/:id', routes.readExperience);
+app.get('/api/experience/:id', routes.api.readExperience);
 
-app.post('/api/xp', routes.createExperience);
+app.post('/api/experience', routes.api.createExperience);
 
-app.put('/api/xp/:id', routes.updateExperience);
+app.put('/api/experience/:id', routes.api.updateExperience);
 
-app.delete('/api/xp/:id', routes.deleteExperience);
+app.delete('/api/experience/:id', routes.api.deleteExperience);
 
 /* upvote and downvote experiences
  */
 
-app.post('/api/xp/upvote/:id', routes.xpUpvote);
-app.post('/api/xp/downvote/:id', routes.xpDownvote);
-
-
+app.post('/api/xp/upvote/:id', routes.api.exexperiencevote);
+app.post('/api/xp/downvote/:id', routes.api.experienceDownvote);
 
 //user api functions
-app.get('/api/user/:id', routes.readUser);
+app.get('/api/user/:id', routes.api.readUser);
 
-app.post('/api/user', routes.createUser);
+app.post('/api/user', routes.api.createUser);
 
-app.put('/api/user/:id', routes.updateUser);
+app.put('/api/user/:id', routes.api.updateUser);
 
-//app.delete('/api/user/:id', routes.deleteUser);
+//app.delete('/api/user/:id', routes.api.deleteUser);
+
+app.get('/upload/photo', function(req, res){
+    res.render('photo.html', {layout: false});
+
+});
 
 
 

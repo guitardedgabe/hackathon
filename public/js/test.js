@@ -3,30 +3,38 @@ $(function(){
 
     var TestView = Backbone.View.extend({
         initialize: function() {
-            this.model.on('test', printTestStatus)
+            this.model.on('test', this.printTestStatus)
         },
 
-        printTestStatus(type){
-            this.$el.append('<div><span> Type: '+ type ', </span> ' + '<span> ' + JSON.stringify(model) + '</span></div>' );
+        printTestStatus: function(type){
+            this.$el.append('<div><span> Type: '+ type  +', </span> ' + '<span> ' + JSON.stringify(this.model) + '</span></div>' );
         }
-
     });
 
-    testView = new TestView({el:$('#testbed')});
 
+    Bucketlist =  Backbone.Collection.extend({
+        url: '/api/bucket',
+        model:Bucket
+    });
+
+    //buckets = new Bucketlist();
 
     //test creation;
-    bucket.create({title:'test'});
-    bucket.save();
+    bucket = new Bucket({title: 'test'});
+
     bucket.trigger('test','save')
 
-    //test reading
-    bucket.read();
-    bucket.trigger('test','read')
+    //testView = new TestView({el:$('#testbed'), model: bucket});
+
+
 
     //test updating
     bucket.save({title:'another test'});
     bucket.trigger('test', 'update')
+
+    //test reading
+    bucket.fetch();
+    bucket.trigger('test','read')
 
     //test deletion
     bucket.destroy();
