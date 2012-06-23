@@ -150,13 +150,6 @@ exports = {
     },
 
     deleteExperience: function(req, res){
-        Experience.remove({_id: req.params.id, author:req.user._id}, function( error, docs) {
-            if (error == null){
-                console.log('Error in deleting Experience');
-                res.send('error');
-                return;
-            }
-
             res.send("he's dead");
 
         })
@@ -264,6 +257,7 @@ exports = {
                 res.send('error');
                 return;
             }
+
 
             experience.downVotes.$inc();
         });
