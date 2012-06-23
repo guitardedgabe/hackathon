@@ -1,6 +1,8 @@
 $(function() {
 
-    var Experience = Backbone.Model.extend({
+    Experience = Backbone.Model.extend({
+
+        idAttribute: "_id",
         
         defaults: {
             date: new Date(),
@@ -59,7 +61,14 @@ $(function() {
         }
     });
     
-    var Bucket = Backbone.Model.extend({
+    Bucket = Backbone.Model.extend({
+
+        url: function(){
+            if ( this.id ) return "/api/bucket/"+this.id;
+            return "/api/bucket";
+        },
+
+        idAttribute: "_id",
         
         defaults: {
             upVotes: 0,
@@ -112,8 +121,10 @@ $(function() {
         }
     });
    
-    var User = Backbone.Model.extend({
+    User = Backbone.Model.extend({
         
+        idAttribute: "_id",
+
         defaults: {
             points: 0,
             pic: '' /*TODO: add string to empty profile picture resource*/

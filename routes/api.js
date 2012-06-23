@@ -8,14 +8,32 @@ exports.index = function(req, res){
 };
 
 
-exports = {
+exports.api  = {
 
 
     readBucket : function(req, res){
-        Bucket.findOne({ "_id":req.params._id }, function(err, doc){
-            if ( error != null ) {
-                res.send(doc);
+        Bucket.findOne({ "_id":req.params.id }, function(err, doc){
+            if ( err != null ) {
+                res.send('error');
+                console.log("Error:",err);
+                return
             }
+            res.send(doc);
+            return
+
+        })
+    },
+
+    readBuckets : function(req, res){
+        Bucket.find({}, function(err, docs){
+            if ( err != null ) {
+                res.send('error');
+                console.log("Error:",err);
+                return
+            }
+            res.send(docs);
+            return
+
         })
     },
 
@@ -77,7 +95,6 @@ exports = {
         var update = {
             pictures: req.body.pictures,
             tags: req.body.location,
-            t
             text: req.body.text,
             votes: req.body.title            
         };
@@ -112,9 +129,9 @@ exports = {
         experience = new Bucket(req.body);
 
         experience.save(function(err){
-      sdfasdfasdfads      if (err != null) console.log('Error: in creating the bucket');
+          if (err != null) console.log('Error: in creating the bucket');
 
-            res.send(experience);
+              res.send(experience);
 
         });
 
@@ -136,10 +153,10 @@ exports = {
     },
 
 
-    deleteGoal: function(req, res){
-        Goal.remove({_id: req.params.id, author:req.user._id}, function( error, docs) {
-            if (error == null){
-                console.log('Error in deleting Goal');
+    deleteBucket: function(req, res){
+        Bucket.remove({_id: req.params.id /*, author:req.user._id */}, function( error, docs) {
+            if (error != null){
+                console.log('Error in deleting Bucket',error);
                 res.send('error');
                 return;
             }
@@ -150,9 +167,20 @@ exports = {
     },
 
     deleteExperience: function(req, res){
+        Experience.remove({_id: req.params.id, author:req.user._id}, function( error, docs) {
+
+            if (error == null){
+
+                console.log('Error in deleting Bucket');
+                res.send('error');
+                return;
+
+            }
+
             res.send("he's dead");
 
         })
+
     },
         
     /* POST request with

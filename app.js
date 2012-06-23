@@ -104,44 +104,44 @@ app.post('/api/photos', routes.uploadPhoto, routes.addPhotoToExperience );
 
 
 //buckets
-app.get('/api/bucket/:id', routes.readBucket);
+app.get('/api/bucket/:id', routes.api.readBucket);
 
-app.post('/api/bucket', routes.createBucket);
+app.post('/api/bucket', routes.api.createBucket);
 
-app.put('/api/bucket/:id', routes.updateBucket);
+app.put('/api/bucket/:id', routes.api.updateBucket);
 
-app.delete('/api/bucket/:id', routes.deleteBucket);
+app.delete('/api/bucket/:id', routes.api.deleteBucket);
 
 /* upvote and downvote bucket
  */
 
-app.post('/api/bucket/upvote/:id', routes.bucketUpvote)
-app.post('/api/bucket/downvote/:id', routes.bucketDownvote)
+app.post('/api/bucket/upvote/:id', routes.api.bucketUpvote)
+app.post('/api/bucket/downvote/:id', routes.api.bucketDownvote)
 
 
 //experiences
-app.get('/api/experience/:id', routes.readExperience);
+app.get('/api/experience/:id', routes.api.readExperience);
 
-app.post('/api/experience', routes.createExperience);
+app.post('/api/experience', routes.api.createExperience);
 
-app.put('/api/experience/:id', routes.updateExperience);
+app.put('/api/experience/:id', routes.api.updateExperience);
 
-app.delete('/api/experience/:id', routes.deleteExperience);
+app.delete('/api/experience/:id', routes.api.deleteExperience);
 
 /* upvote and downvote experiences
  */
 
-app.post('/api/xp/upvote/:id', routes.xpUpvote);
-app.post('/api/xp/downvote/:id', routes.xpDownvote);
+app.post('/api/xp/upvote/:id', routes.api.exexperiencevote);
+app.post('/api/xp/downvote/:id', routes.api.experienceDownvote);
 
 //user api functions
-app.get('/api/user/:id', routes.readUser);
+app.get('/api/user/:id', routes.api.readUser);
 
-app.post('/api/user', routes.createUser);
+app.post('/api/user', routes.api.createUser);
 
-app.put('/api/user/:id', routes.updateUser);
+app.put('/api/user/:id', routes.api.updateUser);
 
-//app.delete('/api/user/:id', routes.deleteUser);
+//app.delete('/api/user/:id', routes.api.deleteUser);
 
 app.get('/upload/photo', function(req, res){
     res.render('photo.html', {layout: false});
