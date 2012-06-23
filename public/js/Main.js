@@ -1,11 +1,13 @@
 $(function() {
 
-    var Experience = Backbone.Model.extend({
+    Experience = Backbone.Model.extend({
         
-        defaults: {
-            date: new Date(),
-            upVote: 0,
-            downVote: 0
+        defaults: function() {
+			return {
+				date: new Date(),
+				upVote: 0,
+				downVote: 0
+			};
         },
 
         initialize: function() {
@@ -59,12 +61,14 @@ $(function() {
         }
     });
     
-    var Bucket = Backbone.Model.extend({
+    Bucket = Backbone.Model.extend({
         
-        defaults: {
-            upVotes: 0,
-            downVotes: 0
-        },
+        defaults: function() {
+			return {
+				upVotes: 0,
+				downVotes: 0
+        	};
+		},
 
         addPicture: function(picture) {
             var pictures = this.get('pictures');
@@ -112,12 +116,14 @@ $(function() {
         }
     });
    
-    var User = Backbone.Model.extend({
+    User = Backbone.Model.extend({
         
-        defaults: {
-            points: 0,
-            pic: '' /*TODO: add string to empty profile picture resource*/
-        },
+        defaults: function() {
+			return {
+				points: 0,
+				pic: '' /*TODO: add string to empty profile picture resource*/
+        	};
+		},
 
         initialize: function() {
             if (!this.get('pic')) {
@@ -184,4 +190,5 @@ $(function() {
             this.save({ 'posts': modifiedPosts });
         }
     });
+
 });
