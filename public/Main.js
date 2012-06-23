@@ -5,9 +5,55 @@ $(function() {
     });
 
     var Bucket = Backbone.Model.extend({
+        
         defaults: {
-            upVote: 0,
-            downVote: 0
+            upVotes: 0,
+            downVotes: 0
+        },
+
+        addPicture: function(picture) {
+            var pictures = this.get('pictures');
+            pictures.push(picture);
+            this.save({ 'pictures': pictures });
+        },
+
+        removePicture: function(picture) {
+            var pictures = this.get('pictures');
+            var updatedPictures = [];
+
+            for (var i=0; i<pictures.length; i++) {
+                if (pictures[i] != picture) {
+                    updatedPictures.push(pictures[i]);
+                }
+            }
+            this.save({ 'pictures': updatedPictures });
+        },
+
+        addExperience: function(experience) {
+            var experiences = this.get('experiences');
+            experiences.push(experience);
+            this.save({ 'experiences': experiences });
+        },
+
+        removeExperience: function(experience) {
+            var experiences = this.get('experiences');
+            updateExperiences = [];
+
+            for (var i=0; i<experiences.length; i++) {
+                if (experiences[i] != experience) {
+                    updatedExperiences.push(experiences[i]);
+                }
+            }
+
+            this.save({ 'experiences': updatedExperiences});
+        },
+
+        upVote: function() {
+            this.save({ 'upVotes': this.upVotes + 1 });
+        },
+
+        downVote: function() {
+            this.save({ 'downVotes': this.downVotes + 1 });
         }
     });
 
@@ -18,32 +64,28 @@ $(function() {
     var User = Backbone.Model.extend({
         
         defaults: {
-            points: 0, /*Integer*/
-            pic: '' /*TODO: add string to empty profile picture resource*/ /*string*/
+            points: 0,
+            pic: '' /*TODO: add string to empty profile picture resource*/
         },
 
         initialize: function() {
             if (!this.get('pic')) {
-                this.set({ 'pic': this.defaults.pic });
+                this.save({ 'pic': this.defaults.pic });
             }
 
             if (!this.get('points')) {
-                this.set({ 'points': this.defaults.points });
+                this.save({ 'points': this.defaults.points });
             }
         },
-
-        updatePicture: function(pictureLink) {
-            this.save({ 'pic': pictureLink });
-        },
-
-        updateScore: function(points) {
+        
+        addPoints: function(points) {
             this.save({ 'points': this.points + points });
         },
 
         addBucket: function(newBucket) {
             var buckets = this.buckets_added;
             buckets.push(newBucket);
-            this.set({ 'buckets_added': buckets });
+            this.save({ 'buckets_added': buckets });
         },
 
         removeBucket: function(removedBucket) {
@@ -51,15 +93,16 @@ $(function() {
             var updatedBuckets = [];
             for (var i=0; i<buckets.length; i++) {
                 if (buckets[i] != removedBucket) {
-                    updatedTodos.push(todos[i]);
+                    updatedBuckets.push(todos[i]);
                 }
             }
+            this.save({ 'buckets': updatedBuckets });
         },
 
         addTodo: function(newTodo) {
             var todos = this.get('todos');
             todos.push(newTodo);
-            this.set({ 'todos': todos });
+            this.save({ 'todos': todos });
         },
 
         removeTodo: function(removedTodo) {
@@ -76,7 +119,7 @@ $(function() {
         addPost: function(newPost) {
             var posts = this.get('posts');
             posts.push(newPost);
-            this.set({ 'posts': posts });
+            this.save({ 'posts': posts });
         },
 
         removePost: function(removedPost) {
