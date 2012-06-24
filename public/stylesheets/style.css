@@ -843,3 +843,106 @@ p {
 }
 
 /* --- /Extra --- */
+
+
+
+
+/* --- About --- */
+
+.about_container {
+	display:inline-block;
+	background:#f0f0ed;
+	border-radius:10px;
+	height:auto;
+	width:100%;
+	position:absolute;
+	box-shadow: 0px 2px 0px #bcbec0;
+	width:540px;
+	padding:40px 50px;
+	margin-left:160px;
+	margin-top:40px;
+}
+
+.about_container h2 {
+	
+}
+
+.about_container p {
+	margin-top:10px;
+	font-family: "Muli";
+	line-height:1.5em;
+	font-size:14px;
+}
+
+
+/* --- Footer HTML --- */
+
+	/*-- 
+
+	<div id="footer">
+		<div id="footer_container">
+			<div id="footer_logo"><a href="/"><img id="footer_logo" src="images/bkt-lst-logo.png"></a></div>
+			<ul>
+				<li><a href="/">home</a></li>
+				<li><a href="/">my profile</a></li>
+				<li><a href="/">about</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	--*/
+
+/* --- Footer --- */
+
+#footer {
+	width:100%;
+	background:#B5D33F;
+	box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.3);
+	border-top:1px #666666;
+}
+#footer_container {
+	position:relative;
+	width:860px;
+	padding-top:0px;
+	margin:0 auto 0 30px;
+}
+
+#footer #footer_logo {
+	background:#B5D33F;
+	width:185px;
+	display:inline-block;
+	width:170px;
+	padding-bottom:20px;
+	padding-top:6px;
+	padding-left:20px;
+}
+
+#footer #footer_logo a {
+	margin:0 auto;
+}
+
+#footer ul {
+	display:inline-block;
+	position:absolute;
+	top:24px;
+	left:240px;
+}
+#footer ul li {
+	display:inline-block;
+}
+#footer ul li a {
+	font-size:14px;
+	text-decoration:none;
+	font-family:"Muli";
+	color:#333333;
+	height:20px;
+	display:inline-block;
+	padding:10px 33px 10px 10px;
+}
+
+#footer ul li a:hover {
+	text-decoration:none;
+	color:#666666;
+}
+
+
