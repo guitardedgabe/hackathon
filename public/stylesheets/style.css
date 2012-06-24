@@ -160,11 +160,6 @@ p {
 	border:0;
 }
 
-#signin {
-    position: absolute;
-    right: 10px;
-}
-
 /* --- /Header --- */
 
 
@@ -264,6 +259,10 @@ p {
 
 
 
+
+
+
+
 /* --- Dim --- */
 
 .dim_background{
@@ -351,16 +350,6 @@ p {
 }
 .dim_social img {
 	margin:0 auto;
-}
-
-#signinTwitter {
-    display:block;
-}
-
-#userStatus{
-    position: absolute;
-    right: 10px;
-    right 
 }
 
 
@@ -484,6 +473,10 @@ p {
 
 
 
+
+
+
+
 /* --- Experiences --- */
 
 #experience_header {
@@ -570,11 +563,31 @@ p {
 	display:inline-block;
 }
 
+#experience_all_container {
+	display:none;
+}
+
 /* --- /Experiences --- */
 
 
 
 
+
+
+#experience_tabs {
+
+}
+
+#experience_tabs ul {
+	margin-left:20px;
+}
+
+#experience_tabs li {
+	display:inline-block;
+	cursor:pointer;
+	background:#333;
+	padding:10px 20px;
+}
 
 
 /* --- Bucket Submit --- */
@@ -681,11 +694,16 @@ p {
 /* --- Experience Submit --- */
 
 
+#create_bucket_container {
+	display:none;
+}
+
 #createBucket {
-    position: relative;
 	height: 320px;
-	width: 600px;
-    left: 160px;
+	width: 690px;
+	position:relative;
+	margin-left:160px;
+	
 }
 
 #bucketTitleContainer {
@@ -709,7 +727,8 @@ p {
 	border-radius: 10px;
 	border: 1px solid gray;
 	font-family:"Amaranth";
-	font-size: 200%;
+	font-size:28px;
+	padding:0 5px;
 }
 
 #bucketInfoContainer {
