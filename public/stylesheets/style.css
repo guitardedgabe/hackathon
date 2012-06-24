@@ -364,9 +364,10 @@ p {
 }
 #body_container {
 	width:860px;
-	margin:0 auto 0 30px;
+	margin:0 auto 0px 30px;
 	background:#E1EB92;
 	min-height:500px;
+	padding-bottom:20px;
 }
 
 /* --- /Body --- */
