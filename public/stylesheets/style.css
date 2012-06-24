@@ -54,6 +54,7 @@ table {
 html, body {
 	width:100%;
 	height:100%;
+	min-width:900px;
 }
 body {
 	background:#F9F9C5;
@@ -70,6 +71,18 @@ h2 {
 	color:#666666;
 }
 
+h3 {
+	font-family:"Amaranth";
+	display:inline-block;
+	font-size:18px;
+	color:#666666;
+}
+p {
+	font-family:"Muli";
+	font-weight:light;
+	font-size:14px;
+	line-height:18px;
+}
 /* --- /Main Style --- */
 
 
@@ -163,10 +176,10 @@ h2 {
 	width:300px;
 	position:absolute;
 	left:920px;
-	margin-top:20px;
 	background:#DBDCDC;
 	border-radius:10px;
 	padding:20px;
+	z-index:2;
 }
 
 #sidebar_subcontainer {
@@ -188,7 +201,36 @@ h2 {
 }
 
 #sidebar_subcontainer li {
-	
+	font-family:"Muli";
+	font-weight:light;
+	list-style-images: url("../images/check.png");
+}
+#breadcrumbs {
+	margin-bottom:20px;
+}
+#breadcrumbs a {
+	text-decoration:none;
+	font-family: "Muli";
+	line-height:1.5em;
+	font-size:14px;
+	color:#333;
+}
+#breadcrumbs a:hover {
+	border-bottom:1px solid #333;
+}
+#experience_info div {
+	float:left;
+	width:300px;
+}
+#experience_info p {
+	font-family:"Muli";
+	font-weight:light;
+	font-size:14px;
+	line-height:18px;
+}
+#experience_info span {
+	font-family:"Muli";
+	font-style:italic;
 }
 
 /* --- /Sidebar --- */
@@ -230,7 +272,7 @@ h2 {
 	position:fixed;
 	left:0;
 	top:0;
-	z-index:1 !important;
+	z-index:3 !important;
 	background:#333300;
 	opacity: 0.50;
 	display:none;
@@ -241,7 +283,7 @@ h2 {
 	width:100%;
 	position:fixed;
 	top:100px;
-	z-index:2 !important;
+	z-index:4 !important;
 	display:none;
 }
 .dim_container{
@@ -337,9 +379,10 @@ h2 {
 }
 #body_container {
 	width:860px;
-	margin:0 auto 0 30px;
+	margin:0 auto 0px 30px;
 	background:#E1EB92;
 	min-height:500px;
+	padding-bottom:20px;
 }
 
 /* --- /Body --- */
@@ -354,22 +397,31 @@ h2 {
 
 .bucket_container {
 	height:auto;
-	width:600px;
+	width:690px;
 	position:relative;
-	margin-bottom:60px;
+	margin-bottom:140px;
 }
 .bucket_info {
 	display:inline-block;
 	margin:20px 10px;
 	background:#f0f0ed;
 	border-radius:10px;
-	height:160px;
+	height:auto;
 	width:100%;
 	position:absolute;
 	box-shadow: 0px 2px 0px #bcbec0;
 }
 .bucket_name {
 	padding:10px;
+}
+.bucket_description {
+	padding:10px;
+}
+.bucket_description p {
+	margin-top:10px;
+	font-family: "Muli";
+	line-height:1.5em;
+	font-size:14px;
 }
 .bucket_votes {
 	width:130px;
@@ -421,16 +473,228 @@ h2 {
 }
 .bucket_photos a {
 	height:80px;
-	
 	min-width:40px;
 	max-width:130px;
 	margin-right:5px;
 	display:inline-block;
 }
 
-
-
-
 /* --- /Buckets --- */
 
 
+
+
+/* --- Experiences --- */
+
+#experience_header {
+	margin:0px 0 20px 160px;
+}
+
+.experience_container {
+	height:auto;
+	width:690px;
+	position:relative;
+	margin:10px 0 20px 160px;
+	box-shadow: 0px 2px 0px #bcbec0;
+	background:#f0f0ed;
+	border-radius:10px;
+}
+.experience_info {
+	display:inline-block;
+	margin:20px 10px;
+	height:auto;
+	padding:10px;
+	position:absolute;
+}
+.experience_description {
+	padding:10px;
+}
+.experience_description p {
+	margin-top:10px;
+	font-family: "Muli";
+	line-height:1.5em;
+	font-size:14px;
+}
+.experience_votes {
+	width:130px;
+	border-radius:10px;
+	display:inline-block;
+	margin:20px 10px;
+	padding:5px 0;
+}
+.experience_votes_score {
+	font-family:"Amaranth";
+	display:inline-block;
+	font-size:48px;
+	padding:12px 0 0;
+	color:#666666;
+	display:inline-block;
+	position:absolute;
+	width:80px;
+	text-align:right;
+}
+.experience_votes_images {
+	display:inline-block;
+	width:60px;
+	margin-left	:75px;
+}
+.experience_votes_images img {
+	cursor:pointer;
+	margin:0 auto;
+	display: block;
+}
+.experience_votes_images img:first-child {
+	margin-bottom:-5px;
+}
+.experience_votes img.active {
+	margin:1px auto -1px;
+}
+.experience_votes img:first-child.active {
+	margin:1px auto -6px;
+}
+.experience_photo {
+	padding:10px;
+	display:inline-block;
+}
+.experience_photo img {
+	min-width:40px;
+	max-width:130px;
+	height:80px;
+	border-radius:10px;
+}
+.experience_photo a {
+	height:80px;
+	min-width:40px;
+	max-width:130px;
+	margin-right:5px;
+	display:inline-block;
+}
+
+/* --- /Experiences --- */
+
+
+
+
+/* --- Bucket Submit --- */
+
+
+#createBucket {
+    position: relative;
+	height: 320px;
+	width: 600px;
+    left: 160px;
+}
+
+#bucketTitleContainer {
+	position: absolute;
+	top: 0;
+	width: 600px;
+	height: 60px;
+	background:#f0f0ed;
+	border-radius: 10px;
+}
+
+#bucketTitle {
+	height: 100%;
+	width: 100%;
+	text-align: left;
+}
+
+#bucketTitleInput {
+	height: 100%;
+	width: 100%;
+	border-radius: 10px;
+	border: 1px solid gray;
+	font-family:"Amaranth";
+	font-size: 200%;
+}
+
+#bucketInfoContainer {
+    padding: 5px 0;
+    box-shadow: 0px 2px 0px #bcbec0;
+	position: absolute;
+	border-radius: 10px;
+	bottom: 50;
+	height: 180px;
+	width: 100%;
+	background:#f0f0ed;
+}
+
+#bucketPhotoContainer {
+	border-radius: 10px;
+	float: left;
+	width: 140px;
+	height: 140px;
+	margin: 20px;
+}
+
+#bucketPhoto {
+	padding:6px 16px;
+	background:#F0F0ED;
+	box-shadow: 0px 2px 0px #bcbec0;
+	border-radius:10px;
+	background-image:url('../images/upload-photo.jpg');
+    background-size: 100% 100%;
+	background-repeat:no-repeat;
+	background-position-x:2px;
+	background-position-y:6px;
+	text-align:center;
+	cursor:pointer;
+	margin:0;
+	width:120px;
+	height:120px;
+}
+
+#bucketPhoto:hover {
+	box-shadow: 0px 2px 5px #bcbec0 inset;
+	background-image:url('../images/upload-photo-hover.jpg');
+}
+
+#bucketTextContainer {
+	float: right;
+	width: 340px;
+	height: 120px;
+    padding: 30px;
+}
+
+#bucketTextInput {
+    position: absolute;
+    padding: 10px;
+	border-radius: 10px;
+    box-shadow: inset 0px 2px 3px #58595B;
+    border: 0;
+	width: 340px;
+	height: 120px;;
+	font-family:"Muli";
+	font-size: 14px;
+    line-height: 18px;
+	text-wrap: normal;
+}
+
+#submitBucket {
+    position: absolute;
+    border-radius: 10px;
+    right: 0px;
+    bottom: 0;
+    width: 80px;
+    height: 40px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+
+/* --- /Bucket Submit --- */
+
+
+
+
+/* --- Extra --- */
+
+.clear {
+	clear:both;
+	float:none !important;
+}
+
+/* --- /Extra --- */

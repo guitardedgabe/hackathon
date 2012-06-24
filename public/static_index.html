@@ -11,10 +11,10 @@
 	<script src="js/view/BucketListView.js"></script>
 </head>
 <body>
-	<div class="dim_background"></div>
-	<div class="dim">
+	<div class="dim_background dim_signup"></div>
+	<div class="dim dim_signup">
 		<div class="dim_container">
-			<div class="dim_cancel"></div>
+			<div class="dim_cancel signup_cancel"></div>
 			<div class="signup">
 				<h2>Sign up!</h2>
 				<p>You're 30 seconds away from joining the most fun community in Tampa.</p>
@@ -28,6 +28,25 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="dim_background dim_submit"></div>
+	<div class="dim dim_submit">
+		<div class="dim_container">
+			<div class="dim_cancel submit_cancel"></div>
+			<div class="signup">
+				<h2>Sign up!</h2>
+				<p>You're 30 seconds away from joining the most fun community in Tampa.</p>
+				<div class="dim_social">
+					<img src="images/facebook-badge.png" />
+				</div>
+				<center><p class="dim_or">or</p></center>
+				<div class="dim_social">
+					<img src="images/twitter-badge.png" />
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<div id="header">
 		<div id="header_container">
 			<div id="logo">
@@ -35,7 +54,7 @@
 			</div>
 			<ul id="top_nav">
 				<li><a href="#">my stuff</a></li>
-				<li><a href="#">submit</a></li>
+				<li id="submit_button"><a href="#">submit</a></li>
 				<li id="top_nav_search">
 					<div>search</div>
 					<input />
@@ -49,7 +68,10 @@
 			<div id="sidebar_subcontainer">
 				<h2>Filters</h2>
 				<ul id="filters">
-					<li>
+					<li>Night Lift</li>
+					<li>Attractions</li>
+					<li>Food</li>
+				</ul>
 			</div>
 		</div>
 
@@ -202,10 +224,91 @@ $(".bucket_votes img").live({
 });
 
 
-$(".dim_cancel").click(function() {
-	$(".dim_background").fadeOut();
-	$(".dim").fadeOut();
+
+
+
+$(document).ready(function() {
+	onResize();
 });
+
+var window_width = $(window).width();
+$(window).resize(function() {
+	onResize();
+});
+
+$(window).scroll(function() {
+	onResize();
+});
+
+function onResize() {
+	window_width = $(window).width();
+	if (window_width < 1250) { // sidebar in body
+		var headerHeight = $("#header").height();
+		headerHeight = 245 + 13;
+		var scrollTop = $(window).scrollTop();
+		if (scrollTop > headerHeight) {
+			var style = {
+				"position":"fixed", 
+				"top":"0",
+				"left":"30px",
+				"border-radius":"0px",
+				"width":"820px"
+			};
+			$("#sidebar_container").css(style);
+			$("#body_container").css("paddingTop", sidebarHeight + 10);
+		}
+		else {
+			var style = {
+				"position":"absolute", 
+				"top":headerHeight,
+				"left":"30px",
+				"border-radius":"0px",
+				"width":"820px"
+			};
+			$("#sidebar_container").css(style);
+			var sidebarHeight = $("#sidebar_container").height() + 40;
+			$("#body_container").css("paddingTop", sidebarHeight + 10);
+		}
+	}
+	else { // sidebar floating next to body
+		var headerHeight = $("#header").height();
+		headerHeight = 245;
+		var scrollTop = $(window).scrollTop();
+		if (scrollTop > headerHeight) {
+			var style = {
+				"position":"fixed", 
+				"top":"10px",
+				"left":"920px",
+				"border-radius":"10px",
+				"width":"300px"
+			};
+			$("#sidebar_container").css(style);
+			$("#body_container").css("paddingTop", "0px");
+		}
+		else {
+			var style = {
+				"position":"absolute", 
+				"top":headerHeight+10,
+				"left":"920px",
+				"border-radius":"10px",
+				"width":"300px"
+			};
+			$("#sidebar_container").css(style);
+			var sidebarHeight = $("#sidebar_container").height() + 40;
+			$("#body_container").css("paddingTop", "0px");
+		}
+	}
+}
+
+
+$("#submit_button").click(function() {
+	$(".dim_submit").fadeIn();
+});
+
+$(".submit_cancel").click(function() {
+	$(".dim_submit").fadeOut();
+});
+
 $(".dim_social").live({
 	"mousedown" : function() {
 		$(this).addClass("dim_social_active");
@@ -218,19 +321,5 @@ $(".dim_social").live({
 	}
 });
 
-$(window).resize(function() {
-	
-});
-
-$(window).scroll(function() {
-	if (window_width > 1000) {
-		var headerHeight = $("#header").height();
-		var scrollTop = $(window).scrollTop();
-		if (scrollTop > headerHeight)
-			$("#sidebar_container").css({"position":"fixed", "top":"10px"});
-		else
-			$("#sidebar_container").css({"position":"absolute", "top":headerHeight+10});
-	}
-});
 </script>
 </html>
