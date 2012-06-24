@@ -20,7 +20,7 @@ $(function() {
 
 		addOne: function(model) {
 			var view = new BucketView({model: model});
-			$("#bucketList").append(view.render().el);
+			$("#body_container").append(view.render().el);
 		},
 
         addAll: function() {
