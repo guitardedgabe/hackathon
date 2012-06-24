@@ -4,7 +4,7 @@ var ExperienceView = Backbone.View.extend({
 
 	events: {
 		"click #addPicture": "addPicture",
-		"click #removePicture": "removePicture"
+		"click #addBucket": "addBucket"
 	},
 
 	initialize: function() {

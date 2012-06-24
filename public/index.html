@@ -15,14 +15,16 @@
 	<div class="dim">
 		<div class="dim_container">
 			<div class="dim_cancel"></div>
-			<h2>Sign up!</h2>
-			<p>You're 30 seconds away from joining the most fun community in Tampa.</p>
-			<div class="dim_social">
-				<img src="images/facebook-badge.png" />
-			</div>
-			<center><p class="dim_or">or</p></center>
-			<div class="dim_social">
-				<img src="images/twitter-badge.png" />
+			<div class="signup">
+				<h2>Sign up!</h2>
+				<p>You're 30 seconds away from joining the most fun community in Tampa.</p>
+				<div class="dim_social">
+					<img src="images/facebook-badge.png" />
+				</div>
+				<center><p class="dim_or">or</p></center>
+				<div class="dim_social">
+					<img src="images/twitter-badge.png" />
+				</div>
 			</div>
 		</div>
 	</div>
@@ -42,6 +44,15 @@
 		</div>
 	</div>
 	<div id="body">
+
+		<div id="sidebar_container">
+			<div id="sidebar_subcontainer">
+				<h2>Filters</h2>
+				<ul id="filters">
+					<li>
+			</div>
+		</div>
+
 		<div id="body_container">
         </div>
     </div>
@@ -91,8 +102,8 @@ $(".bucket_votes img").live({
 
 
 $(".dim_cancel").click(function() {
-	$(".dim").remove();
-	$(".dim_background").remove();
+	$(".dim_background").fadeOut();
+	$(".dim").fadeOut();
 });
 $(".dim_social").live({
 	"mousedown" : function() {
@@ -105,5 +116,7 @@ $(".dim_social").live({
 		$(this).removeClass("dim_social_active");
 	}
 });
+
+
 </script>
 </html>
