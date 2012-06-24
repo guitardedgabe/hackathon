@@ -395,7 +395,6 @@ p {
 	background:#E1EB92;
 	min-height:500px;
 	padding-bottom:20px;
-	position:relative;
 }
 
 /* --- /Body --- */
@@ -870,6 +869,7 @@ p {
 .clear {
 	clear:both;
 	float:none !important;
+	display:block;
 }
 
 /* --- /Extra --- */
@@ -884,14 +884,15 @@ p {
 	background:#f0f0ed;
 	border-radius:10px;
 	height:auto;
-	position:absolute;
 	box-shadow: 0px 2px 0px #bcbec0;
 	width:540px;
 	padding:40px 50px;
-	margin-left:160px;
-	margin-top:40px;
+	margin:40px 0 20px 160px;
+	position:relative;
 }
-
+#about_title {
+	margin-bottom:10px;
+}
 .about_container h2 {
 	
 }
@@ -901,6 +902,13 @@ p {
 	font-family: "Muli";
 	line-height:1.5em;
 	font-size:14px;
+}
+
+img#about_img {
+	width:200px;
+	margin:10px 10px 10px -125px;
+	border-radius:10px;
+	float:left;
 }
 
 
