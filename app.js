@@ -44,7 +44,7 @@ UserSchema.plugin(mongooseAuth, {
     },  
 	facebook: {
 		everyauth: {
-			myHostname : 'http://www.tampabucketlist.com',
+			myHostname : 'http://tampabucketlist.com:4000',
 			appId: '298711390225395',
 			appSecret: 'a2c48875a24d5abbb9d81b1eac806100',
 			redirectPath: '/'
@@ -52,12 +52,22 @@ UserSchema.plugin(mongooseAuth, {
 	},
     twitter :{
         everyauth: {
-            myHostname: 'http://tampa.lest.us'
+            myHostname: 'http://tampabucketlist.com:4000'
           , consumerKey: conf.twit.consumerKey
           , consumerSecret: conf.twit.consumerSecret
           , redirectPath: '/' 
         }   
-    }   
+    },
+
+    github :{
+		everyauth: {
+			myHostname : 'http://tampabucketlist.com:4000',
+			appId: conf.github.appId,
+			appSecret: conf.github.appSecret,
+			redirectPath: '/'
+		}
+    }
+
 });
 
 User = mongoose.model('User',UserSchema);
