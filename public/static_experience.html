@@ -108,6 +108,7 @@
 					</div>
 					<div class="clear"></div>
 				</div>
+				<div id="sidebar_toTop">▲ Top</div>
 			</div>
 		</div>
 
@@ -132,8 +133,8 @@
 
 			<div id="experience_tabs">
 				<ul>
-					<li><h2>Add Experience</h2></li>
 					<li><h2>View Experiences</h2></li>
+					<li><h2>Add Experience</h2></li>
 				</ul>
 			</div>
 
@@ -439,10 +440,6 @@ function onResize() {
 		}
 	}
 }
-$(document).ready(function() {
-	onResize();
-	$("#experience_tabs").find("li").eq(0).click();
-});
 
 
 $("#experience_tabs li").click(function() {
@@ -450,14 +447,14 @@ $("#experience_tabs li").click(function() {
 	if (index == 0) {
 		$("#experience_tabs li").removeClass("active");
 		$(this).addClass("active");
-		$("#experience_all_container").hide();
-		$("#create_bucket_container").show();
+		$("#create_bucket_container").hide();
+		$("#experience_all_container").show();
 	}
 	else if (index == 1) {
 		$("#experience_tabs li").removeClass("active");
 		$(this).addClass("active");
-		$("#create_bucket_container").hide();
-		$("#experience_all_container").show();
+		$("#experience_all_container").hide();
+		$("#create_bucket_container").show();
 	}
 });
 
@@ -481,7 +478,15 @@ $(".dim_social").live({
 		$(this).removeClass("dim_social_active");
 	}
 });
-$("#submitBucketPhoto").click(function(){$("#submitUserPhotoInput").click()});
 
+$("#submitBucketPhoto").click(function(){$("#submitUserPhotoInput").click()});
+$("#sidebar_toTop").click(function() {
+	$("html, body").animate({ scrollTop: 0 }, "fast");
+});
+
+$(document).ready(function() {
+	onResize();
+	$("#experience_tabs").find("li").eq(0).click();
+});
 </script>
 </html>

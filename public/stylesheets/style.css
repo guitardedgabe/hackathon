@@ -228,6 +228,16 @@ p {
 	font-style:italic;
 }
 
+#sidebar_toTop {
+	width:auto;
+	text-align:right;
+	cursor:pointer;
+	color:#666;
+}
+#sidebar_toTop:hover {
+	color:#333;
+}
+
 /* --- /Sidebar --- */
 
 
