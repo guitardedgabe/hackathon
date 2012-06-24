@@ -267,7 +267,7 @@ p {
 	position:fixed;
 	left:0;
 	top:0;
-	z-index:1 !important;
+	z-index:3 !important;
 	background:#333300;
 	opacity: 0.50;
 	display:none;
@@ -278,7 +278,7 @@ p {
 	width:100%;
 	position:fixed;
 	top:100px;
-	z-index:2 !important;
+	z-index:4 !important;
 	display:none;
 }
 .dim_container{
@@ -556,6 +556,120 @@ p {
 }
 
 /* --- /Experiences --- */
+
+
+
+
+/* --- Bucket Submit --- */
+
+
+#createBucket {
+	position: absolute;
+	height: 320px;
+	width: 600px;
+}
+
+#bucketTitleContainer {
+	position: absolute;
+	top: 0;
+	width: 600px;
+	height: 60px;
+	background:#f0f0ed;
+	border-radius: 10px;
+}
+
+#bucketTitle {
+	height: 100%;
+	width: 100%;
+	text-align: left;
+}
+
+#bucketTitleInput {
+	height: 100%;
+	width: 100%;
+	border-radius: 10px;
+	border: 1px solid gray;
+	font-family:"Amaranth";
+	font-size: 200%;
+}
+
+#bucketInfoContainer {
+    padding: 5px 0;
+    box-shadow: 0px 2px 0px #bcbec0;
+	position: absolute;
+	border-radius: 10px;
+	bottom: 50;
+	height: 180px;
+	width: 100%;
+	background:#f0f0ed;
+}
+
+#bucketPhotoContainer {
+	border-radius: 10px;
+	float: left;
+	width: 140px;
+	height: 140px;
+	margin: 20px;
+}
+
+#bucketPhoto {
+	padding:6px 16px;
+	background:#F0F0ED;
+	box-shadow: 0px 2px 0px #bcbec0;
+	border-radius:10px;
+	background-image:url('../images/upload-photo.jpg');
+    background-size: 100% 100%;
+	background-repeat:no-repeat;
+	background-position-x:2px;
+	background-position-y:6px;
+	text-align:center;
+	cursor:pointer;
+	margin:0;
+	width:120px;
+	height:120px;
+}
+
+#bucketPhoto:hover {
+	box-shadow: 0px 2px 5px #bcbec0 inset;
+	background-image:url('../images/upload-photo-hover.jpg');
+}
+
+#bucketTextContainer {
+	float: right;
+	width: 340px;
+	height: 120px;
+    padding: 30px;
+}
+
+#bucketTextInput {
+    position: absolute;
+    padding: 10px;
+	border-radius: 10px;
+    box-shadow: inset 0px 2px 3px #58595B;
+    border: 0;
+	width: 340px;
+	height: 120px;;
+	font-family:"Muli";
+	font-size: 14px;
+    line-height: 18px;
+	text-wrap: normal;
+}
+
+#submitBucket {
+    position: absolute;
+    border-radius: 10px;
+    right: 0px;
+    bottom: 0;
+    width: 80px;
+    height: 40px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+
+/* --- /Bucket Submit --- */
 
 
 
