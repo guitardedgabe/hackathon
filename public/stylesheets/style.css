@@ -153,7 +153,7 @@ p {
 }
 #top_nav_search input {
 	border-radius:5px;
-	box-shadow:inset 0px 1px 2px #58595B;
+	box-shadow:inset 0px 1px 3px rgba(0, 0, 0, 0.3);
 	padding:4px 5px;
 	margin:0px 0 -4px 4px;
 	width:auto;
@@ -395,6 +395,7 @@ p {
 	background:#E1EB92;
 	min-height:500px;
 	padding-bottom:20px;
+	position:relative;
 }
 
 /* --- /Body --- */
@@ -585,8 +586,9 @@ p {
 
 #experience_all_container {
 	display:none;
-	background:#333;
+	background:#DBDCDC;
 	padding:20px;
+	z-index:100;
 }
 
 /* --- /Experiences --- */
@@ -607,18 +609,21 @@ p {
 #experience_tabs li {
 	display:inline-block;
 	cursor:pointer;
-	background:#333;
-	padding:10px 20px;
+	background:#ffffff;
+	padding:10px 20px 10px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	margin-left:10px;
 }
 #experience_tabs li.active {
 	background:#DBDCDC;
 	color:#333;
 }
 #experience_tabs li.active h2 {
-	color:#333;
+	color:#666666;
 }
 #experience_tabs li:hover h2 {
-	color:#fff;
+	color:#999999;
 }
 
 
@@ -651,7 +656,7 @@ p {
     position: absolute;
     padding: 10px;
 	border-radius: 10px;
-    box-shadow: inset 0px 2px 3px #58595B;
+	box-shadow:inset 0px 2px 4px rgba(0, 0, 0, 0.3);
     border: 0;
 	width: 300px;
 	height: 120px;
@@ -728,7 +733,7 @@ p {
 
 #create_bucket_container {
 	display:none;
-	background:#333;
+	background:#DBDCDC;
 	padding:20px;
 }
 
@@ -736,32 +741,36 @@ p {
 	height: 320px;
 	width: 790px;
 	position:relative;
-	
+	border:0;
 }
 
 #bucketTitleContainer {
 	position: absolute;
 	top: 0;
 	width: 600px;
-	height: 60px;
+	height: 50px;
 	background:#f0f0ed;
 	border-radius: 10px;
+	border:0;
 }
 
 #bucketTitle {
 	height: 100%;
 	width: 100%;
 	text-align: left;
+	border:0;
 }
 
 #bucketTitleInput {
 	height: 100%;
 	width: 100%;
 	border-radius: 10px;
-	border: 1px solid gray;
 	font-family:"Amaranth";
-	font-size:28px;
-	padding:0 5px;
+	padding:0 0 0 20px;
+	font-size: 21px!important;
+	border:0!important;
+	color:#666;
+	box-shadow:inset 0px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 #bucketInfoContainer {
@@ -816,7 +825,7 @@ p {
     position: absolute;
     padding: 10px;
 	border-radius: 10px;
-    box-shadow: inset 0px 2px 3px #58595B;
+    box-shadow:inset 0px 1px 3px rgba(0, 0, 0, 0.3);
     border: 0;
 	width: 340px;
 	height: 120px;;
@@ -837,6 +846,14 @@ p {
     padding-bottom: 4px;
     padding-left: 8px;
     padding-right: 8px;
+	background: #cdeb8e; /* Old browsers */
+	background: -moz-linear-gradient(top,  #cdeb8e 0%, #a5c956 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cdeb8e), color-stop(100%,#a5c956)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #cdeb8e 0%,#a5c956 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #cdeb8e 0%,#a5c956 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #cdeb8e 0%,#a5c956 100%); /* IE10+ */
+	background: linear-gradient(top,  #cdeb8e 0%,#a5c956 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cdeb8e', endColorstr='#a5c956',GradientType=0 ); /* IE6-9 */
 }
 
 #submitBucketError {
@@ -867,7 +884,6 @@ p {
 	background:#f0f0ed;
 	border-radius:10px;
 	height:auto;
-	width:100%;
 	position:absolute;
 	box-shadow: 0px 2px 0px #bcbec0;
 	width:540px;
@@ -886,6 +902,42 @@ p {
 	line-height:1.5em;
 	font-size:14px;
 }
+
+
+/* --- User --- */
+.user_wrap {
+	background:#f0f0ed;
+	border-radius:10px;
+	height:auto;
+	box-shadow: 0px 2px 0px #bcbec0;
+	width:540px;
+	padding:20px;
+	position:absolute;
+	top:20px;
+	left:120px;
+}
+.user_about {
+	float:left;
+	padding:10px;
+}
+
+.user_about .user_data {
+	float:right;
+	padding:10px;
+}
+
+.user_about .user_data li {
+	font-size:14px;
+	font-family:"Muli";
+	color:#666666;
+}
+
+.user_about .user_data li .data {
+	font-size:18px;
+	font-family:"Amaranth"
+	color:#666666;	
+}
+
 
 
 /* --- Footer HTML --- */
