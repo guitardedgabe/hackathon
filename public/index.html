@@ -9,6 +9,8 @@
 	<script src="js/Main.js"></script>
 	<script src="js/view/BucketView.js"></script>
 	<script src="js/view/BucketListView.js"></script>
+
+	<script src="js/view/MainPage.js"></script>
     <script src="js/view/SubmitBucketView.js"></script>
 </head>
 <body>
@@ -23,14 +25,21 @@
 					<img src="images/facebook-badge.png" />
 				</div>
 				<center><p class="dim_or">or</p></center>
-				<div class="dim_social">
-					<img src="images/twitter-badge.png" />
-				</div>
+				<a class="dim_social" id="signinTwitter" href="/auth/twitter">
+
+                        <img src="images/twitter-badge.png" />
+				</a>
 			</div>
 		</div>
 	</div>
 	<div id="header">
 		<div id="header_container">
+        <div id="userStatus">
+            <div id="signin">
+                <button> Sign in </button>
+            </div>
+        </div>
+
 			<div id="logo">
 				<a href="/"><img src="images/header-logo.jpg" /></a>
 			</div>

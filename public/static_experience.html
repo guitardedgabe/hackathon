@@ -8,7 +8,8 @@
 	<script src="lib/backbone.js"></script>
 	<script src="js/Main.js"></script>
 	<script src="js/view/BucketView.js"></script>
-	<script src="js/view/BucketListView.js"></script>
+    <script src="js/view/BucketListView.js"></script>
+    <script src="js/view/SubmitExperienceView.js"></script>
 </head>
 <body>
 	<div class="dim_background"></div>
@@ -101,9 +102,38 @@
 				<h2>Add your Experience</h2>
 			</div>
 
+            <div id="createBucket">
+                <div id="bucketTitleContainer">
+                    <div id=bucketTitle>
+                        <input type="TEXT" id="bucketTitleInput" placeHolder="Enter title here" />
+                    </div>
+                </div>
 
+                <div id="bucketInfoContainer">	
+                    <div id="bucketPhotoContainer">
+                        <div id="bucketPhoto"></div>
+                    </div>
+                    <div id="bucketTextContainer">
+                            <textarea rows="3" placeHolder="Enter details here" id="bucketTextInput"></textarea>
+                    </div>
 
+                    <div id=bucketCategory>
+                        <!--<select id="bucketCategoryOptions">
+                            <option value="nightlife" > Night Life </option>
+                            <option value="attractions" > Attractions </option>
+                            <option value="food"> Food </option>
+                        </select>-->
+                    </div>
+                </div>
 
+                <button id="submitBucket" >Done!</button>
+
+                <form id="photoUpload" enctype="multipart/form-data" action="/api/photos" method="post"> 
+                    upload photo here:
+                    <input type="file" id="userPhotoInput" name="userPhoto" />
+                    <div id="imagePreview"><img height="100px" /></div>
+                </form>
+            </div>
 
 			<div id="experience_header">
 				<h2>Experiences</h2>
@@ -153,6 +183,30 @@
 		</div>
 	</div>
 </body>
+
+<script type="text/template" id="bucketView-template">
+    <div class="bucket_container">
+        <div class="bucket_votes">
+            <div class="bucket_votes_score">
+                <%= upVotes-downVotes %>
+            </div>
+            <div class="bucket_votes_images">
+                <img class="upVote" src="images/upvote.png" />
+                <img class="downVote" src="images/downvote.png" />
+            </div>
+        </div>	
+        <div class="bucket_info">
+            <div class="bucket_name"><a><h2><%= title %></h2></a></div>
+
+            <div class="bucket_photos">
+                <a href="#"><img src="images/party1.jpg" /></a>
+                <a href="#"><img src="images/party1.jpg" /></a>
+                <a href="#"><img src="images/party1.jpg" /></a>
+                <a href="#"><img src="images/party1.jpg" /></a>
+            </div>
+        </div>
+    </div>
+</script>
 
 <script>
 $(".bucket_votes img").live({

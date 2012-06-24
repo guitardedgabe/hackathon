@@ -6,5 +6,10 @@ module.exports =  conf = {
     facebook: {
         appId: '298711390225395',
         appSecret: 'a2c48875a24d5abbb9d81b1eac806100'
-    }
+    },
+    github: {
+        appId: '3367503ff9a54c71bc81',
+        appSecret: 'd1a2a761f0d824a8ab20fd99ec1663f29a999fca'
+    },
+
 }

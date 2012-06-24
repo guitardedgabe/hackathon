@@ -7,6 +7,10 @@
 	<script src="lib/underscore.js"></script>
 	<script src="lib/backbone.js"></script>
 	<script src="lib/jquery.form.js"></script>
+
+	<script src="js/Main.js"></script>
+
+	<script src="js/view/SubmitBucketView.js"></script>
 </head>
 <body>
     <div id="createBucket">
@@ -33,7 +37,9 @@
 			</div>
         </div>
 
-        <button id="submitBucket" >Done!</button>
+        <div id="submitBucket">
+            <button>Done</button>
+        </div>
 
         <form id="photoUpload" enctype="multipart/form-data" action="/api/photos" method="post"> 
             upload photo here:
