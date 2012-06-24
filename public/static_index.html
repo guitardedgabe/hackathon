@@ -218,6 +218,19 @@ $(".dim_social").live({
 	}
 });
 
+$(window).resize(function() {
+	
+});
 
+$(window).scroll(function() {
+	if (window_width > 1000) {
+		var headerHeight = $("#header").height();
+		var scrollTop = $(window).scrollTop();
+		if (scrollTop > headerHeight)
+			$("#sidebar_container").css({"position":"fixed", "top":"10px"});
+		else
+			$("#sidebar_container").css({"position":"absolute", "top":headerHeight+10});
+	}
+});
 </script>
 </html>
