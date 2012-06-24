@@ -192,6 +192,31 @@ h2 {
 
 
 
+/* --- Photo Uploader --- */
+
+.photo_upload {
+	padding:6px 16px;
+	background:#F0F0ED;
+	box-shadow: 0px 2px 0px #bcbec0;
+	border-radius:10px;
+	background-image:url('../images/upload-photo.jpg');
+	background-repeat:no-repeat;
+	background-position-x:16px;
+	background-position-y:6px;
+	text-align:center;
+	cursor:pointer;
+	margin:0;
+	width:180px;
+	height:180px;
+}
+
+.photo_upload:hover {
+	box-shadow: 0px 2px 5px #bcbec0 inset;
+	background-image:url('../images/upload-photo-hover.jpg');
+}
+
+
+
 /* --- Dim --- */
 
 .dim_background{
