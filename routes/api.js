@@ -119,12 +119,12 @@ exports.api = api  = {
 
     createBucket: function(req, res) {
 
+        bucket = new Bucket(req.body);
+
         //set the author
         if(req.user._id){
             bucket.author = req.user._id;
         }
-
-        bucket = new Bucket(req.body);
 
         bucket.save(function(err){
             if (err != null) console.log('Error: in creating the bucket');

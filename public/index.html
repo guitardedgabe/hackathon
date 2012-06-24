@@ -6,12 +6,15 @@
 	<script src="lib/jquery.js"></script>
 	<script src="lib/underscore.js"></script>
 	<script src="lib/backbone.js"></script>
+	<script src="lib/jquery.form.js"></script>
+
 	<script src="js/Main.js"></script>
 	<script src="js/view/BucketView.js"></script>
 	<script src="js/view/BucketListView.js"></script>
 
-	<script src="js/view/MainPage.js"></script>
     <script src="js/view/SubmitBucketView.js"></script>
+	<script src="js/view/MainPage.js"></script>
+
 </head>
 <body>
 	<div class="dim_background"></div>
@@ -32,6 +35,39 @@
 			</div>
 		</div>
 	</div>
+
+
+	<div class="dim_background dim_submit"></div>
+	<div class="dim dim_submit">
+		<div class="dim_container"> 
+			<div class="dim_cancel submit_cancel"></div>
+            <div id="submitBucketError"></div>
+			<div id="submitTitle">
+				<input type="TEXT" id="submitTitleInput" placeHolder="Title" />
+			</div>
+			
+			<div id="submitTextContainer">
+	                <textarea rows="3" placeHolder="Info" id="submitTextInput"></textarea>
+			</div>
+
+			<div id="bucketCategory">
+				<!--<select id="bucketCategoryOptions">
+					<option value="nightlife" > Night Life </option>
+					<option value="attractions" > Attractions </option>
+					<option value="food"> Food </option>
+	            </select>-->
+			</div>
+	        
+	        <form id="submitPhotoUpload" enctype="multipart/form-data" action="/api/photos" method="post">
+				<div id="submitBucketPhoto"></div>
+	            <input type="file" id="submitUserPhotoInput" name="userPhoto" />
+	            <div id="imagePreview"><img height="100px" /></div>
+	        </form>
+
+	        <button id="submitBucket">Done!</button>
+		</div>
+	</div>
+
 	<div id="header">
 		<div id="header_container">
         <div id="userStatus">
@@ -45,10 +81,10 @@
 			</div>
 			<ul id="top_nav">
 				<li><a href="#">my stuff</a></li>
-				<li><a href="#">submit</a></li>
+				<li id="submit"><a href="#">submit</a></li>
 				<li id="top_nav_search">
 					<div>search</div>
-					<input />
+					<input type=text />
 				</li>
 			</ul>
 		</div>

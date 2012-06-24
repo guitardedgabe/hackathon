@@ -21,19 +21,24 @@
 		</div>
 
 		<div id="bucketInfoContainer">	
+            <div id="bucketSubmitError"></div>
 			<div id="bucketPhotoContainer">
                 <div id="bucketPhoto"></div>
+                <form id="photoUpload" enctype="multipart/form-data" action="/api/photos" method="post"> 
+                    <input type="file" id="userPhotoInput" name="userPhoto" />
+                    <div id="imagePreview"><img height="100px" /></div>
+                </form>
 			</div>
 			<div id="bucketTextContainer">
                     <textarea rows="3" placeHolder="Enter bucket info here" id="bucketTextInput"></textarea>
 			</div>
 
 			<div id=bucketCategory>
-				<!--<select id="bucketCategoryOptions">
+				<select id="bucketCategoryOptions">
 					<option value="nightlife" > Night Life </option>
 					<option value="attractions" > Attractions </option>
 					<option value="food"> Food </option>
-                </select>-->
+                </select>
 			</div>
         </div>
 
@@ -41,20 +46,12 @@
             <button>Done</button>
         </div>
 
-        <form id="photoUpload" enctype="multipart/form-data" action="/api/photos" method="post"> 
-            upload photo here:
-            <input type="file" id="userPhotoInput" name="userPhoto" />
-            <div id="imagePreview"><img height="100px" /></div>
-        </form>
     </div>
 </body>
 
 <script>
 $(document).ready(function() {
 
-    $('#bucketPhoto').click(function() {
-        alert("Hello, Marco. The Matrix has you.");    
-    });
 
     // Check to see when a user has selected a file                                                                                                                
     var timerId;
@@ -77,7 +74,8 @@ $(document).ready(function() {
                 //show the photo
                 console.log('success');
                 ballz = response;
-                $('#imagePreview img').attr('src',response.path);
+                //$('#imagePreview img').attr('src',response.path);
+                $('#bucketPhoto').css('background-image','url('+response.path+')');
                 return false;
             }
         });
