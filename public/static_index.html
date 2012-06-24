@@ -49,7 +49,10 @@
 			<div id="sidebar_subcontainer">
 				<h2>Filters</h2>
 				<ul id="filters">
-					<li>
+					<li>Night Lift</li>
+					<li>Attractions</li>
+					<li>Food</li>
+				</ul>
 			</div>
 		</div>
 
@@ -218,19 +221,80 @@ $(".dim_social").live({
 	}
 });
 
+
+$(document).ready(function() {
+	onResize();
+});
+
+var window_width = $(window).width();
 $(window).resize(function() {
-	
+	onResize();
 });
 
 $(window).scroll(function() {
-	if (window_width > 1000) {
-		var headerHeight = $("#header").height();
-		var scrollTop = $(window).scrollTop();
-		if (scrollTop > headerHeight)
-			$("#sidebar_container").css({"position":"fixed", "top":"10px"});
-		else
-			$("#sidebar_container").css({"position":"absolute", "top":headerHeight+10});
-	}
+	onResize();
 });
+
+function onResize() {
+	window_width = $(window).width();
+	if (window_width < 1250) { // sidebar in body
+		var headerHeight = $("#header").height();
+		headerHeight = 245 + 13;
+		var scrollTop = $(window).scrollTop();
+		if (scrollTop > headerHeight) {
+			var style = {
+				"position":"fixed", 
+				"top":"0",
+				"left":"30px",
+				"border-radius":"0px",
+				"width":"820px"
+			};
+			$("#sidebar_container").css(style);
+			$("#body_container").css("paddingTop", sidebarHeight + 10);
+		}
+		else {
+			var style = {
+				"position":"absolute", 
+				"top":headerHeight,
+				"left":"30px",
+				"border-radius":"0px",
+				"width":"820px"
+			};
+			$("#sidebar_container").css(style);
+			var sidebarHeight = $("#sidebar_container").height() + 40;
+			$("#body_container").css("paddingTop", sidebarHeight + 10);
+		}
+	}
+	else { // sidebar floating next to body
+		var headerHeight = $("#header").height();
+		headerHeight = 245;
+		var scrollTop = $(window).scrollTop();
+		if (scrollTop > headerHeight) {
+			var style = {
+				"position":"fixed", 
+				"top":"10px",
+				"left":"920px",
+				"border-radius":"10px",
+				"width":"300px"
+			};
+			$("#sidebar_container").css(style);
+			$("#body_container").css("paddingTop", "0px");
+		}
+		else {
+			var style = {
+				"position":"absolute", 
+				"top":headerHeight+10,
+				"left":"920px",
+				"border-radius":"10px",
+				"width":"300px"
+			};
+			$("#sidebar_container").css(style);
+			var sidebarHeight = $("#sidebar_container").height() + 40;
+			$("#body_container").css("paddingTop", "0px");
+		}
+	}
+}
+
+
 </script>
 </html>
