@@ -1,0 +1,125 @@
+<html>
+<head>
+	<title>Bucket List - About</title>
+	<link href='http://fonts.googleapis.com/css?family=Muli|Amaranth' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="stylesheets/style.css"/>
+		<link rel="stylesheet" href="stylesheets/footerstyle.css"/>
+	<script src="lib/jquery.js"></script>
+	<script src="lib/underscore.js"></script>
+	<script src="lib/backbone.js"></script>
+	<script src="js/Main.js"></script>
+	<script src="js/view/BucketView.js"></script>
+    <script src="js/view/BucketListView.js"></script>
+    <script src="js/view/SubmitExperienceView.js"></script>
+</head>
+<body>
+	<div class="dim_background"></div>
+	<div class="dim">
+		<div class="dim_container">
+			<div class="dim_cancel"></div>
+			<div class="signup">
+				<h2>Sign up!</h2>
+				<p>You're 30 seconds away from joining the most fun community in Tampa.</p>
+				<div class="dim_social">
+					<img src="images/facebook-badge.png" />
+				</div>
+				<center><p class="dim_or">or</p></center>
+				<div class="dim_social">
+					<img src="images/twitter-badge.png" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="header">
+		<div id="header_container">
+			<div id="logo">
+				<a href="/"><img src="images/header-logo.jpg" /></a>
+			</div>
+			<ul id="top_nav">
+				<li><a href="#">my stuff</a></li>
+				<li><a href="#">submit</a></li>
+				<li id="top_nav_search">
+					<div>search</div>
+					<input />
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div id="body">
+		<div id="body_container">
+				<div class="about_container">
+					<h2>About Tampa Bucket List</h2>
+						<p>This is my awesome thing to do. I think it's cool because I once rode a camel for 5 days in the desert, seeking the wisdom of the prophet Lil Phaty. He told me to go home to the beautiful Tampa, Florida and visit the Gecko Building. There I was destined to douse the building in a glorious stream of yellow liquid. It was unclear if he was refering to Mountain Dew or Lemonade, so I pissed all over the structure. I have now ascended to a higher place and would like some company. DO EEEET!</p>
+					
+				</div>
+			
+
+			
+
+		</div>
+	</div>
+	
+	<div id="footer">
+		<div id="footer_container">
+			<div id="footer_logo"><a href="/"><img id="footer_logo" src="images/bkt-lst-logo.png"></a></div>
+			<ul>
+				<li><a href="/">home</a></li>
+				<li><a href="/">my profile</a></li>
+				<li><a href="/">about</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	
+</body>
+
+<script type="text/template" id="bucketView-template">
+    <div class="bucket_container">
+        <div class="bucket_votes">
+            <div class="bucket_votes_score">
+                <%= upVotes-downVotes %>
+            </div>
+            <div class="bucket_votes_images">
+                <img class="upVote" src="images/upvote.png" />
+                <img class="downVote" src="images/downvote.png" />
+            </div>
+        </div>	
+        <div class="bucket_info">
+            <div class="bucket_name"><a><h2><%= title %></h2></a></div>
+
+            <div class="bucket_photos">
+                <a href="#"><img src="images/party1.jpg" /></a>
+                <a href="#"><img src="images/party1.jpg" /></a>
+                <a href="#"><img src="images/party1.jpg" /></a>
+                <a href="#"><img src="images/party1.jpg" /></a>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script>
+
+
+$(".dim_cancel").click(function() {
+	$(".dim_background").fadeOut();
+	$(".dim").fadeOut();
+});
+$(".dim_social").live({
+	"mousedown" : function() {
+		$(this).addClass("dim_social_active");
+	},
+	"mouseout" : function() {
+		$(this).removeClass("dim_social_active");
+	},
+	"mouseup" : function() {
+		$(this).removeClass("dim_social_active");
+	}
+});
+
+
+
+
+
+
+</script>
+</html>
