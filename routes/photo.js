@@ -1,6 +1,6 @@
 
 exports.uploadPhoto = function(req, res, next){
-    //console.log(req.files);
+  console.log(req.files);
   var serverPath = 'photos/images/' + req.files.userPhoto.name;
 
     console.log(req.files.userPhoto.name);

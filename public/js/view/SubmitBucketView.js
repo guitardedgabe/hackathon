@@ -8,13 +8,11 @@ $(function() {
 		},
 
 		initialize: function() {
-            //load user model from the given options
-            this.user = this.options.user;
 
-			this.text = this.$("#bucketText input");
+			this.text = this.$("#bucketTextInput");
 			this.title = this.$("#bucketTitle input");
 			this.category = this.$("#bucketCategory input");
-			this.picture = this.$("#imagePreview img");
+			this.picture = this.$("#bucketPhoto");
 		},
 
 		submitBucket: function() {
@@ -23,7 +21,7 @@ $(function() {
 			bucketOptions.text = this.text.val();
 			bucketOptions.title = this.title.val();
 			bucketOptions.category = this.category.val();
-			bucketOptions.pictures = [this.picture.attr('src')];
+			bucketOptions.pictures = [this.picture.css('background-image').split(/[(]|[)]/)[1]]; //regex to get the url
 
             console.log('bucket options are', bucketOptions);
 
