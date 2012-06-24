@@ -382,7 +382,6 @@ p {
 	background:#E1EB92;
 	min-height:500px;
 	padding-bottom:20px;
-	position:relative;
 }
 
 /* --- /Body --- */
@@ -898,30 +897,36 @@ p {
 	height:auto;
 	box-shadow: 0px 2px 0px #bcbec0;
 	width:540px;
-	padding:20px;
-	position:absolute;
+	padding:10px 10px 10px 20px;
 	top:20px;
 	left:120px;
-}
-.user_about {
-	float:left;
-	padding:10px;
+	position:relative;
+	height:80px;
 }
 
-.user_about .user_data {
-	float:right;
-	padding:10px;
+.name {
+	position: relative;
+	top: 10px;
+	left:10px;
 }
 
-.user_about .user_data li {
+ .user_data {
+	display:inline-block;
+	position:absolute;
+	right: 20px;
+	top: 12px;
+}
+
+.user_data li {
 	font-size:14px;
 	font-family:"Muli";
 	color:#666666;
+	line-height:1.6em;
 }
 
-.user_about .user_data li .data {
-	font-size:18px;
-	font-family:"Amaranth"
+.user_data li .data {
+	font-size:18px!important;
+	font-family: "Amaranth"!important;
 	color:#666666;	
 }
 
