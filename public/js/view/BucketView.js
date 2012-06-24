@@ -9,7 +9,6 @@ $(function() {
 		},
 
 		initialize: function() {
-
 			this.model.bind("change", this.render, this);
 		},
 
@@ -48,6 +47,4 @@ $(function() {
 			this.model.downVote();
 		}
 	});
-
-    
 });
