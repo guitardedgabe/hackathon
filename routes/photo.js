@@ -15,12 +15,13 @@ exports.uploadPhoto = function(req, res, next){
             return;
           }
 
+          req.path = serverPath;
+
+          //next();
+
           res.send({
             path: serverPath,
           });
-
-          req.path = serverPath;
-          next();
 
         }
       );
