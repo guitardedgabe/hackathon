@@ -6,15 +6,6 @@
 	<script src="lib/jquery.js"></script>
 	<script src="lib/underscore.js"></script>
 	<script src="lib/backbone.js"></script>
-	<script src="lib/jquery.form.js"></script>
-
-	<script src="js/Main.js"></script>
-	<script src="js/view/BucketView.js"></script>
-	<script src="js/view/BucketListView.js"></script>
-
-    <script src="js/view/SubmitBucketView.js"></script>
-	<script src="js/view/MainPage.js"></script>
-
 </head>
 <body>
 	<div class="dim_background dim_signup"></div>
@@ -35,12 +26,10 @@
 		</div>
 	</div>
 
-
 	<div class="dim_background dim_submit"></div>
 	<div class="dim dim_submit">
 		<div class="dim_container"> 
 			<div class="dim_cancel submit_cancel"></div>
-            <div id="submitBucketError"></div>
 			<div id="submitTitle">
 				<input type="TEXT" id="submitTitleInput" placeHolder="Title" />
 			</div>
@@ -69,65 +58,90 @@
 
 	<div id="header">
 		<div id="header_container">
-        <div id="userStatus">
-            <div id="signin">
-                <button> Sign in </button>
-            </div>
-        </div>
-
 			<div id="logo">
 				<a href="/"><img src="images/header-logo.jpg" /></a>
 			</div>
 			<ul id="top_nav">
 				<li><a href="#">my stuff</a></li>
-				<li id="submit"><a href="#">submit</a></li>
+				<li id="submit_button"><a href="#">submit</a></li>
 				<li id="top_nav_search">
 					<div>search</div>
-					<input type=text />
+					<input />
 				</li>
 			</ul>
 		</div>
 	</div>
+
 	<div id="body">
 
 		<div id="sidebar_container">
 			<div id="sidebar_subcontainer">
 				<h2>Filters</h2>
 				<ul id="filters">
-					<li>
+					<li class="active"> <a href="#/">Night Life</a></li>
+					<li class="active"><a href="#/">Attractions</a></li>
+					<li class="active"><a href="#/">Food</a></li>
+					<li class="active"><a href="#/">Night Life</a></li>
+				</ul>
 			</div>
 		</div>
 
 		<div id="body_container">
-        </div>
+			<div class="bucket_container">
+				<div class="bucket_votes">
+					<div class="bucket_votes_score">
+					  54
+					</div>
+					<div class="bucket_votes_images">
+						<img src="images/upvote.png" />
+						<img src="images/downvote.png" />
+					</div>
+				</div>	
+				<div class="bucket_info">
+					<div class="bucket_name"><a href="experience.html"><h2>Participate in a Hackathon</h2></a></div>
+					<div class="bucket_photos">
+						<a href="#"><img src="images/party1.jpg" /></a>
+						<a href="#"><img src="images/party1.jpg" /></a>
+						<a href="#"><img src="images/party1.jpg" /></a>
+						<a href="#"><img src="images/party1.jpg" /></a>
+					</div>
+				</div>
+      </div>
+
+			<div class="bucket_container">
+				<div class="bucket_votes">
+					<div class="bucket_votes_score">
+						78
+					</div>
+					<div class="bucket_votes_images">
+						<img src="images/upvote.png" />
+						<img src="images/downvote.png" />
+					</div>
+				</div>	
+				<div class="bucket_info">
+					<div class="bucket_name"><a href="experience.html"><h2>Name of Event</h2></a></div>
+					<div class="bucket_photos">
+						<a href="#"><img src="images/party1.jpg" /></a>
+						<a href="#"><img src="images/party1.jpg" /></a>
+						<a href="#"><img src="images/party1.jpg" /></a>
+						<a href="#"><img src="images/party1.jpg" /></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+  <div id="footer">
+    <div id="footer_container">
+      <div id="footer_logo"><a href="/"><img id="footer_logo" src="images/bkt-lst-logo.png"></a></div>
+      <ul>
+        <li><a href="/">home</a></li>
+        <li><a href="/">my profile</a></li>
+        <li><a href="/about.html">about</a></li>
+      </ul>
     </div>
+  </div>
 </body>
 
-<!-- Templates -->
-<script type="text/template" id="bucketView-template">
-    <div class="bucket_container">
-        <div class="bucket_votes">
-            <div class="bucket_votes_score">
-                <%= upVotes-downVotes %>
-            </div>
-            <div class="bucket_votes_images">
-                <img class="upVote" src="images/upvote.png" />
-                <img class="downVote" src="images/downvote.png" />
-            </div>
-        </div>	
-        <div class="bucket_info">
-            <div class="bucket_name"><a><h2><%= title %></h2></a></div>
-
-            <div class="bucket_photos">
-                <a href="#"><img src="images/party1.jpg" /></a>
-                <a href="#"><img src="images/party1.jpg" /></a>
-                <a href="#"><img src="images/party1.jpg" /></a>
-                <a href="#"><img src="images/party1.jpg" /></a>
-            </div>
-        </div>
-    </div>
-</script>
-<!-- End Templates -->
 
 <script>
 $(".bucket_votes img").live({
@@ -146,10 +160,91 @@ $(".bucket_votes img").live({
 });
 
 
-$(".dim_cancel").click(function() {
-	$(".dim_background").fadeOut();
-	$(".dim").fadeOut();
+
+
+
+$(document).ready(function() {
+	onResize();
 });
+
+var window_width = $(window).width();
+$(window).resize(function() {
+	onResize();
+});
+
+$(window).scroll(function() {
+	onResize();
+});
+
+function onResize() {
+	window_width = $(window).width();
+	if (window_width < 1250) { // sidebar in body
+		var headerHeight = $("#header").height();
+		headerHeight = 245 + 13;
+		var scrollTop = $(window).scrollTop();
+		if (scrollTop > headerHeight) {
+			var style = {
+				"position":"fixed", 
+				"top":"0",
+				"left":"30px",
+				"border-radius":"0px",
+				"width":"820px"
+			};
+			$("#sidebar_container").css(style);
+			$("#body_container").css("paddingTop", sidebarHeight + 10);
+		}
+		else {
+			var style = {
+				"position":"absolute", 
+				"top":headerHeight,
+				"left":"30px",
+				"border-radius":"0px",
+				"width":"820px"
+			};
+			$("#sidebar_container").css(style);
+			var sidebarHeight = $("#sidebar_container").height() + 40;
+			$("#body_container").css("paddingTop", sidebarHeight + 10);
+		}
+	}
+	else { // sidebar floating next to body
+		var headerHeight = $("#header").height();
+		headerHeight = 245;
+		var scrollTop = $(window).scrollTop();
+		if (scrollTop > headerHeight) {
+			var style = {
+				"position":"fixed", 
+				"top":"10px",
+				"left":"920px",
+				"border-radius":"10px",
+				"width":"300px"
+			};
+			$("#sidebar_container").css(style);
+			$("#body_container").css("paddingTop", "0px");
+		}
+		else {
+			var style = {
+				"position":"absolute", 
+				"top":headerHeight+10,
+				"left":"920px",
+				"border-radius":"10px",
+				"width":"300px"
+			};
+			$("#sidebar_container").css(style);
+			var sidebarHeight = $("#sidebar_container").height() + 40;
+			$("#body_container").css("paddingTop", "0px");
+		}
+	}
+}
+
+
+$("#submit_button").click(function() {
+	$(".dim_submit").fadeIn();
+});
+
+$(".submit_cancel").click(function() {
+	$(".dim_submit").fadeOut();
+});
+
 $(".dim_social").live({
 	"mousedown" : function() {
 		$(this).addClass("dim_social_active");
@@ -161,7 +256,15 @@ $(".dim_social").live({
 		$(this).removeClass("dim_social_active");
 	}
 });
+$("#submitBucketPhoto").click(function(){$("#submitUserPhotoInput").click()});
 
 
+$("#filters li").click(function() {
+	if($(this).hasClass("active"))
+		$(this).removeClass("active");
+	else
+		$(this).addClass("active");
+	return false;
+});
 </script>
 </html>
