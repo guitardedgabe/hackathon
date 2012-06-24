@@ -1,0 +1,223 @@
+<html>
+<head>
+	<title>Bucket List</title>
+	<link href='http://fonts.googleapis.com/css?family=Muli|Amaranth' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="stylesheets/style.css"/>
+	<script src="lib/jquery.js"></script>
+	<script src="lib/underscore.js"></script>
+	<script src="lib/backbone.js"></script>
+	<script src="js/Main.js"></script>
+	<script src="js/view/BucketView.js"></script>
+	<script src="js/view/BucketListView.js"></script>
+</head>
+<body>
+	<div class="dim_background"></div>
+	<div class="dim">
+		<div class="dim_container">
+			<div class="dim_cancel"></div>
+			<div class="signup">
+				<h2>Sign up!</h2>
+				<p>You're 30 seconds away from joining the most fun community in Tampa.</p>
+				<div class="dim_social">
+					<img src="images/facebook-badge.png" />
+				</div>
+				<center><p class="dim_or">or</p></center>
+				<div class="dim_social">
+					<img src="images/twitter-badge.png" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="header">
+		<div id="header_container">
+			<div id="logo">
+				<a href="/"><img src="images/header-logo.jpg" /></a>
+			</div>
+			<ul id="top_nav">
+				<li><a href="#">my stuff</a></li>
+				<li><a href="#">submit</a></li>
+				<li id="top_nav_search">
+					<div>search</div>
+					<input />
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div id="body">
+
+		<div id="sidebar_container">
+			<div id="sidebar_subcontainer">
+				<h2>Filters</h2>
+				<ul id="filters">
+					<li>
+			</div>
+		</div>
+
+		<div id="body_container">
+			<div class="bucket_container">
+				<div class="bucket_votes">
+					<div class="bucket_votes_score">
+						78
+					</div>
+					<div class="bucket_votes_images">
+						<img src="images/upvote.png" />
+						<img src="images/downvote.png" />
+					</div>
+				</div>	
+				<div class="bucket_info">
+					<div class="bucket_name"><a><h2>Name of Event</h2></a></div>
+					<div class="bucket_photos">
+						<a href="#"><img src="images/party1.jpg" /></a>
+						<a href="#"><img src="images/party1.jpg" /></a>
+						<a href="#"><img src="images/party1.jpg" /></a>
+						<a href="#"><img src="images/party1.jpg" /></a>
+					</div>
+				</div>
+			</div>
+
+			<div class="bucket_container">
+				<div class="bucket_votes">
+					<div class="bucket_votes_score">
+						78
+					</div>
+					<div class="bucket_votes_images">
+						<img src="images/upvote.png" />
+						<img src="images/downvote.png" />
+					</div>
+				</div>	
+				<div class="bucket_info">
+					<div class="bucket_name"><a><h2>Name of Event</h2></a></div>
+					<div class="bucket_photos">
+						<a href="#"><img src="images/party1.jpg" /></a>
+						<a href="#"><img src="images/party1.jpg" /></a>
+						<a href="#"><img src="images/party1.jpg" /></a>
+						<a href="#"><img src="images/party1.jpg" /></a>
+					</div>
+				</div>
+			</div>
+
+			<div class="bucket_container">
+				<div class="bucket_votes">
+					<div class="bucket_votes_score">
+						78
+					</div>
+					<div class="bucket_votes_images">
+						<img src="images/upvote.png" />
+						<img src="images/downvote.png" />
+					</div>
+				</div>	
+				<div class="bucket_info">
+					<div class="bucket_name"><a><h2>Name of Event</h2></a></div>
+					<div class="bucket_photos">
+						<a href="#"><img src="images/party1.jpg" /></a>
+						<a href="#"><img src="images/party1.jpg" /></a>
+						<a href="#"><img src="images/party1.jpg" /></a>
+						<a href="#"><img src="images/party1.jpg" /></a>
+					</div>
+				</div>
+			</div>
+
+			<div class="bucket_container">
+				<div class="bucket_votes">
+					<div class="bucket_votes_score">
+						78
+					</div>
+					<div class="bucket_votes_images">
+						<img src="images/upvote.png" />
+						<img src="images/downvote.png" />
+					</div>
+				</div>	
+				<div class="bucket_info">
+					<div class="bucket_name"><a><h2>Name of Event</h2></a></div>
+					<div class="bucket_photos">
+						<a href="#"><img src="images/party1.jpg" /></a>
+						<a href="#"><img src="images/party1.jpg" /></a>
+						<a href="#"><img src="images/party1.jpg" /></a>
+						<a href="#"><img src="images/party1.jpg" /></a>
+					</div>
+				</div>
+			</div>
+
+			<div class="bucket_container">
+				<div class="bucket_votes">
+					<div class="bucket_votes_score">
+						78
+					</div>
+					<div class="bucket_votes_images">
+						<img src="images/upvote.png" />
+						<img src="images/downvote.png" />
+					</div>
+				</div>	
+				<div class="bucket_info">
+					<div class="bucket_name"><a><h2>Name of Event</h2></a></div>
+					<div class="bucket_photos">
+						<a href="#"><img src="images/party1.jpg" /></a>
+						<a href="#"><img src="images/party1.jpg" /></a>
+						<a href="#"><img src="images/party1.jpg" /></a>
+						<a href="#"><img src="images/party1.jpg" /></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+<!-- Templates -->
+<script type="text/template" id="bucketView-template">
+	<div class="bucket_container">
+		<div class="bucket_votes">
+			<div class="bucket_votes_score"><%= upVotes-downVotes %></div>
+			<div class="bucket_votes_images">
+				<img src="images/upvote.png" id="upVote" />
+				<img src="images/downvote.png" id="downVote" />
+			</div>
+		</div>	
+		<div class="bucket_info">
+            <div class="bucket_name"><h2><%= title %></h2></div>
+			<div class="bucket_photos">
+				<!--<img src="images/party1.jpg" height="100px" />
+				<img src="images/party1.jpg" height="100px" />
+				<img src="images/party1.jpg" height="20px" />
+				<img src="images/party1.jpg" height="20px" />-->
+			</div>
+		</div>
+	</div>
+</script>
+<!-- End Templates -->
+
+<script>
+$(".bucket_votes img").live({
+	"mouseenter" : function() {
+		var src = $(this).attr("src");
+		src = src.replace(".", "-active.");
+		$(this).attr("src", src);
+		$(this).addClass("active");
+	},
+	"mouseleave" : function() {
+		var src = $(this).attr("src");
+		src = src.replace("-active.", ".");
+		$(this).attr("src", src);
+		$(this).removeClass("active");
+	}
+});
+
+
+$(".dim_cancel").click(function() {
+	$(".dim_background").fadeOut();
+	$(".dim").fadeOut();
+});
+$(".dim_social").live({
+	"mousedown" : function() {
+		$(this).addClass("dim_social_active");
+	},
+	"mouseout" : function() {
+		$(this).removeClass("dim_social_active");
+	},
+	"mouseup" : function() {
+		$(this).removeClass("dim_social_active");
+	}
+});
+
+
+</script>
+</html>
