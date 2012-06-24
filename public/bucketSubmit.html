@@ -2,7 +2,7 @@
 <head>
 	<title>Bucket List Uploader</title>
 	<link href='http://fonts.googleapis.com/css?family=Muli|Amaranth' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="stylesheets/style.css"/>
+	<link rel="stylesheet" href="stylesheets/bucketSubmit.css"/>
 	<script src="lib/jquery.js"></script>
 	<script src="lib/underscore.js"></script>
 	<script src="lib/backbone.js"></script>
@@ -10,34 +10,45 @@
 </head>
 <body>
     <div id="createBucket">
-        <div id=bucketText>
-            Bucket Text:<input type="TEXT"  />
+		<div id="bucketTitleContainer">
+			<div id=bucketTitle>
+				<input type="TEXT" id="bucketTitleInput" placeHolder="Enter title here" />
+			</div>
+		</div>
+
+		<div id="bucketInfoContainer">	
+			<div id="bucketPhotoContainer">
+                <div id="bucketPhoto"></div>
+			</div>
+			<div id="bucketTextContainer">
+                    <textarea rows="3" placeHolder="Enter bucket info here" id="bucketTextInput"></textarea>
+			</div>
+
+			<div id=bucketCategory>
+				<!--<select id="bucketCategoryOptions">
+					<option value="nightlife" > Night Life </option>
+					<option value="attractions" > Attractions </option>
+					<option value="food"> Food </option>
+                </select>-->
+			</div>
         </div>
 
-        <div id=bucketTitle>
-            Bucket Title:<input type="TEXT"  />
-        </div>
-
-        <div id=bucketCategory>
-            Bucket Category:
-            <select>
-                <option value="nightlife" > Night Life </option>
-                <option value="attractions" > Attractions </option>
-                <option value="food"> Food </option>
-            </select>
-        </div>
+        <button id="submitBucket" >Done!</button>
 
         <form id="photoUpload" enctype="multipart/form-data" action="/api/photos" method="post"> 
             upload photo here:
             <input type="file" id="userPhotoInput" name="userPhoto" />
             <div id="imagePreview"><img height="100px" /></div>
         </form>
-
     </div>
 </body>
 
 <script>
 $(document).ready(function() {
+
+    $('#bucketPhoto').click(function() {
+        alert("Hello, Marco. The Matrix has you.");    
+    });
 
     // Check to see when a user has selected a file                                                                                                                
     var timerId;
