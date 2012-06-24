@@ -71,6 +71,12 @@ h2 {
 	color:#666666;
 }
 
+h3 {
+	font-family:"Amaranth";
+	display:inline-block;
+	font-size:18px;
+	color:#666666;
+}
 /* --- /Main Style --- */
 
 
@@ -187,6 +193,33 @@ h2 {
 	font-family:"Muli";
 	font-weight:light;
 	list-style-images: url("../images/check.png");
+}
+#breadcrumbs {
+	margin-bottom:20px;
+}
+#breadcrumbs a {
+	text-decoration:none;
+	font-family: "Muli";
+	line-height:1.5em;
+	font-size:14px;
+	color:#333;
+}
+#breadcrumbs a:hover {
+	border-bottom:1px solid #333;
+}
+#experience_info div {
+	float:left;
+	width:300px;
+}
+#experience_info p {
+	font-family:"Muli";
+	font-weight:light;
+	font-size:12px;
+	line-height:1.5em;
+}
+#experience_info span {
+	font-family:"Muli";
+	font-style:italic;
 }
 
 /* --- /Sidebar --- */
@@ -351,13 +384,22 @@ h2 {
 	margin:20px 10px;
 	background:#f0f0ed;
 	border-radius:10px;
-	height:160px;
+	height:auto;
 	width:100%;
 	position:absolute;
 	box-shadow: 0px 2px 0px #bcbec0;
 }
 .bucket_name {
 	padding:10px;
+}
+.bucket_description {
+	padding:10px;
+}
+.bucket_description p {
+	margin-top:10px;
+	font-family: "Muli";
+	line-height:1.5em;
+	font-size:14px;
 }
 .bucket_votes {
 	width:130px;
@@ -422,3 +464,7 @@ h2 {
 /* --- /Buckets --- */
 
 
+.clear {
+	clear:both;
+	float:none !important;
+}
