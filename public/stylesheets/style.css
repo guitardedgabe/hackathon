@@ -479,15 +479,12 @@ p {
 
 /* --- Experiences --- */
 
-#experience_header {
-	margin:0px 0 20px 160px;
-}
 
 .experience_container {
 	height:auto;
-	width:690px;
+	width:820px;
 	position:relative;
-	margin:10px 0 20px 160px;
+	margin:0px 0 20px 00px;
 	box-shadow: 0px 2px 0px #bcbec0;
 	background:#f0f0ed;
 	border-radius:10px;
@@ -565,6 +562,8 @@ p {
 
 #experience_all_container {
 	display:none;
+	background:#333;
+	padding:20px;
 }
 
 /* --- /Experiences --- */
@@ -587,6 +586,16 @@ p {
 	cursor:pointer;
 	background:#333;
 	padding:10px 20px;
+}
+#experience_tabs li.active {
+	background:#DBDCDC;
+	color:#333;
+}
+#experience_tabs li.active h2 {
+	color:#333;
+}
+#experience_tabs li:hover h2 {
+	color:#fff;
 }
 
 
@@ -696,13 +705,14 @@ p {
 
 #create_bucket_container {
 	display:none;
+	background:#333;
+	padding:20px;
 }
 
 #createBucket {
 	height: 320px;
-	width: 690px;
+	width: 790px;
 	position:relative;
-	margin-left:160px;
 	
 }
 

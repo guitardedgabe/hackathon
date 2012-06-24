@@ -76,7 +76,7 @@
 			</ul>
 		</div>
 	</div>
-	
+
 	<div id="body">
 
 		<div id="sidebar_container">
@@ -170,10 +170,91 @@
 	                    <div id="imagePreview"><img height="100px" /></div>
 	                </form>
 	            </div>
+	            <div class="clear"></div>
         	</div>
 
 
             <div id="experience_all_container">
+				<div class="experience_container">
+					<div class="experience_votes">
+						<div class="experience_votes_score">
+							63
+						</div>
+						<div class="experience_votes_images">
+							<img src="images/upvote.png" />
+							<img src="images/downvote.png" />
+						</div>
+					</div>
+					<div class="experience_photo"> 	
+						<img src="images/party1.jpg" width="150px" />
+					</div>	
+					<div class="experience_info">
+						<div class="experience_text">
+							<p>Ma Niggggggga! I totally took your advice. It was good advice. Me and my girl Shanequarastafondasherome ascended to a higher place so many times last night. Mad respect yo.</p> 
+						</div>
+					</div>
+				</div>
+
+				<div class="experience_container">
+					<div class="experience_votes">
+						<div class="experience_votes_score">
+							63
+						</div>
+						<div class="experience_votes_images">
+							<img src="images/upvote.png" />
+							<img src="images/downvote.png" />
+						</div>
+					</div>
+					<div class="experience_photo"> 	
+						<img src="images/party1.jpg" width="150px" />
+					</div>	
+					<div class="experience_info">
+						<div class="experience_text">
+							<p>Ma Niggggggga! I totally took your advice. It was good advice. Me and my girl Shanequarastafondasherome ascended to a higher place so many times last night. Mad respect yo.</p> 
+						</div>
+					</div>
+				</div>
+
+				<div class="experience_container">
+					<div class="experience_votes">
+						<div class="experience_votes_score">
+							63
+						</div>
+						<div class="experience_votes_images">
+							<img src="images/upvote.png" />
+							<img src="images/downvote.png" />
+						</div>
+					</div>
+					<div class="experience_photo"> 	
+						<img src="images/party1.jpg" width="150px" />
+					</div>	
+					<div class="experience_info">
+						<div class="experience_text">
+							<p>Ma Niggggggga! I totally took your advice. It was good advice. Me and my girl Shanequarastafondasherome ascended to a higher place so many times last night. Mad respect yo.</p> 
+						</div>
+					</div>
+				</div>
+
+				<div class="experience_container">
+					<div class="experience_votes">
+						<div class="experience_votes_score">
+							63
+						</div>
+						<div class="experience_votes_images">
+							<img src="images/upvote.png" />
+							<img src="images/downvote.png" />
+						</div>
+					</div>
+					<div class="experience_photo"> 	
+						<img src="images/party1.jpg" width="150px" />
+					</div>	
+					<div class="experience_info">
+						<div class="experience_text">
+							<p>Ma Niggggggga! I totally took your advice. It was good advice. Me and my girl Shanequarastafondasherome ascended to a higher place so many times last night. Mad respect yo.</p> 
+						</div>
+					</div>
+				</div>
+
 				<div class="experience_container">
 					<div class="experience_votes">
 						<div class="experience_votes_score">
@@ -215,10 +296,11 @@
 					</div>
 				</div>
 			</div>
+			<div class="clear"></div>
 		</div>
 	</div>
 </body>
-
+<!--
 <script type="text/template" id="bucketView-template">
     <div class="bucket_container">
         <div class="bucket_votes">
@@ -242,7 +324,7 @@
         </div>
     </div>
 </script>
-
+-->
 <script>
 $(".bucket_votes img").live({
 	"mouseenter" : function() {
@@ -366,12 +448,16 @@ $(document).ready(function() {
 $("#experience_tabs li").click(function() {
 	var index = $("#experience_tabs").find("li").index(this);
 	if (index == 0) {
-		$("#create_bucket_container").hide();
-		$("#experience_all_container").show();
-	}
-	else if (index == 1) {
+		$("#experience_tabs li").removeClass("active");
+		$(this).addClass("active");
 		$("#experience_all_container").hide();
 		$("#create_bucket_container").show();
+	}
+	else if (index == 1) {
+		$("#experience_tabs li").removeClass("active");
+		$(this).addClass("active");
+		$("#create_bucket_container").hide();
+		$("#experience_all_container").show();
 	}
 });
 
