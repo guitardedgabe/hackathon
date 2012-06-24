@@ -13,6 +13,9 @@ $(function() {
 
             this.submitBucketView = new SubmitBucketView({collection:this.collection});
 
+            this.bucketListView = new BucketListView({collection:buckets});
+
+
             this.user.on('change',this.changeUserStatus, this);
         },
 
@@ -36,5 +39,9 @@ $(function() {
         },
     });
 
+    buckets =  new BucketList();
+
     mainPage  = new MainPage({collection: buckets});
+
+
 });

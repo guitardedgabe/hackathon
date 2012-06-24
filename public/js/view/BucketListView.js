@@ -63,12 +63,5 @@ $(function() {
 
 	});
 
-    buckets =  new BucketList();
-
-    a = new BucketListView({collection:buckets});
-
-
-
-   // buckets.create({'title':'woot'});
 
 });
