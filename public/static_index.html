@@ -74,15 +74,17 @@
 			</ul>
 		</div>
 	</div>
+
 	<div id="body">
 
 		<div id="sidebar_container">
 			<div id="sidebar_subcontainer">
 				<h2>Filters</h2>
 				<ul id="filters">
-					<li>Night Lift</li>
-					<li>Attractions</li>
-					<li>Food</li>
+					<li class="active"> <a href="#/">Night Life</a></li>
+					<li class="active"><a href="#/">Attractions</a></li>
+					<li class="active"><a href="#/">Food</a></li>
+					<li class="active"><a href="#/">Night Life</a></li>
 				</ul>
 			</div>
 		</div>
@@ -333,5 +335,14 @@ $(".dim_social").live({
 	}
 });
 $("#submitBucketPhoto").click(function(){$("#submitUserPhotoInput").click()});
+
+
+$("#filters li").click(function() {
+	if($(this).hasClass("active"))
+		$(this).removeClass("active");
+	else
+		$(this).addClass("active");
+	return false;
+});
 </script>
 </html>

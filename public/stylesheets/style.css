@@ -192,13 +192,26 @@ p {
 }
 
 #sidebar_subcontainer ul {
-
+	margin-top:10px;
 }
 
 #sidebar_subcontainer li {
 	font-family:"Muli";
 	font-weight:light;
-	list-style-images: url("../images/check.png");
+	position:relative;
+	list-style-image: url("../images/xsquare.png");
+	cursor:pointer;
+	margin:10px 0 10px 40px;
+}
+#sidebar_subcontainer li.active {
+	list-style-image: url("../images/xactive.png");
+}
+#sidebar_subcontainer li a {
+	position:absolute;
+	top:5px;
+	left:0;
+	text-decoration:none;
+	color:#666666;;
 }
 #breadcrumbs {
 	margin-bottom:20px;
@@ -492,7 +505,7 @@ p {
 
 .experience_container {
 	height:auto;
-	width:820px;
+	width:100%;
 	position:relative;
 	margin:0px 0 20px 00px;
 	box-shadow: 0px 2px 0px #bcbec0;
@@ -573,8 +586,12 @@ p {
 #experience_all_container {
 	display:none;
 	background:#DBDCDC;
-	padding:20px;
+	border-radius:5px;
+	width:760px;
+	margin-left:10px;
+	padding:40px;
 	z-index:100;
+	box-shadow: 0px 2px 0px #bcbec0;
 }
 
 /* --- /Experiences --- */
@@ -720,7 +737,11 @@ p {
 #create_bucket_container {
 	display:none;
 	background:#DBDCDC;
-	padding:20px;
+	width:760px;
+	margin-left:10px;
+	padding:40px;
+	box-shadow: 0px 2px 0px #bcbec0;
+	border-radius:5px;
 }
 
 #createBucket {
@@ -856,6 +877,7 @@ p {
 .clear {
 	clear:both;
 	float:none !important;
+	display:block;
 }
 
 /* --- /Extra --- */
@@ -870,14 +892,15 @@ p {
 	background:#f0f0ed;
 	border-radius:10px;
 	height:auto;
-	position:absolute;
 	box-shadow: 0px 2px 0px #bcbec0;
 	width:540px;
 	padding:40px 50px;
-	margin-left:160px;
-	margin-top:40px;
+	margin:40px 0 20px 160px;
+	position:relative;
 }
-
+#about_title {
+	margin-bottom:10px;
+}
 .about_container h2 {
 	
 }
@@ -887,6 +910,13 @@ p {
 	font-family: "Muli";
 	line-height:1.5em;
 	font-size:14px;
+}
+
+img#about_img {
+	width:200px;
+	margin:10px 10px 10px -125px;
+	border-radius:10px;
+	float:left;
 }
 
 
