@@ -564,9 +564,10 @@ p {
 
 
 #createBucket {
-	position: absolute;
+    position: relative;
 	height: 320px;
 	width: 600px;
+    left: 160px;
 }
 
 #bucketTitleContainer {
