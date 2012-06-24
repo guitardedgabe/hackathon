@@ -1,4 +1,14 @@
 <html>
+<head>
+	<title>Bucket List Uploader</title>
+	<link href='http://fonts.googleapis.com/css?family=Muli|Amaranth' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="stylesheets/style.css"/>
+	<script src="lib/jquery.js"></script>
+	<script src="lib/underscore.js"></script>
+	<script src="lib/backbone.js"></script>
+	<script src="lib/jquery.form.js"></script>
+</head>
+<body>
     <div id="createBucket">
         <div id=bucketText>
             Bucket Text:<input type="TEXT"  />
@@ -17,10 +27,51 @@
             </select>
         </div>
 
-        <div id="photoUpload">
+        <form id="photoUpload" enctype="multipart/form-data" action="/api/photos" method="post"> 
             upload photo here:
             <input type="file" id="userPhotoInput" name="userPhoto" />
-        </div>
+            <div id="imagePreview"><img height="100px" /></div>
+        </form>
 
     </div>
+</body>
+
+<script>
+$(document).ready(function() {
+
+    // Check to see when a user has selected a file                                                                                                                
+    var timerId;
+    timerId = setInterval(function() {
+    if($('#userPhotoInput').val() !== '') {
+            clearInterval(timerId);
+            $('#photoUpload').submit();
+        }
+    }, 500);
+
+    $('#photoUpload').submit(function(e) {
+
+        $(this).ajaxSubmit({                                                                                                                 
+
+            error: function(xhr) {
+                console.log('Error: ' + xhr.status);
+            },
+
+            success: function(response) {
+                //show the photo
+                console.log('success');
+                ballz = response;
+                $('#imagePreview img').attr('src',response.path);
+                return false;
+            }
+        });
+
+        // Have to stop the form from submitting and causing                                                                                                       
+        // a page refresh - don't forget this                                                                                                                      
+        return false;
+
+    });
+
+});
+</script>
+
 </html>
