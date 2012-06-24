@@ -201,14 +201,14 @@ p {
 	position:relative;
 	list-style-image: url("../images/xsquare.png");
 	cursor:pointer;
-	margin-left:40px;
+	margin:10px 0 10px 40px;
 }
 #sidebar_subcontainer li.active {
 	list-style-image: url("../images/xactive.png");
 }
 #sidebar_subcontainer li a {
 	position:absolute;
-	top:15px;
+	top:5px;
 	left:0;
 	text-decoration:none;
 	color:#666666;;
