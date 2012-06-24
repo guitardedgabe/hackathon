@@ -30,8 +30,7 @@ $(function() {
 
         openSignInPopup: function() {
             console.log('lolol');
-            $('.dim').show()
-            $('.dim_background').show()
+            $('.dim_signup').show()
         },
 
         openSubmitPopup: function() {
