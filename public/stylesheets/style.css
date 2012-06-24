@@ -160,6 +160,11 @@ p {
 	border:0;
 }
 
+#signin {
+    position: absolute;
+    right: 10px;
+}
+
 /* --- /Header --- */
 
 
@@ -346,6 +351,16 @@ p {
 }
 .dim_social img {
 	margin:0 auto;
+}
+
+#signinTwitter {
+    display:block;
+}
+
+#userStatus{
+    position: absolute;
+    right: 10px;
+    right 
 }
 
 

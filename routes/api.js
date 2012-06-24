@@ -8,7 +8,7 @@ exports.index = function(req, res){
 };
 
 
-exports.api  = {
+exports.api = api  = {
 
 
     readBucket : function(req, res){
@@ -52,6 +52,11 @@ exports.api  = {
                 return
             }
         })
+    },
+
+    whoami: function(req, res){
+        if (req.user) res.send(req.user);
+        else res.send({});
     },
 
     updateBucket : function(req, res){
@@ -113,6 +118,11 @@ exports.api  = {
 
 
     createBucket: function(req, res) {
+
+        //set the author
+        if(req.user._id){
+            bucket.author = req.user._id;
+        }
 
         bucket = new Bucket(req.body);
 
@@ -224,13 +234,63 @@ exports.api  = {
     /* POST
      * bucket id
      */
-    upVoteBucket: function(req, res){
+    __upVoteBucket: function(req, res){
+
         var bucketID = req.params.id;
+
         if (typeof(bucketID) == 'undefined' ) {
             res.send('wrong parameters');
             return;
         }
 
+
+        User.findOne({_id:req.user._id, voteHistory: { $elemMatch : {target : bucketID } } }, function (err, user){
+
+            if ( err != null ) {
+                console.log("Error: adding experience to bucket");
+                res.send('error');
+                return;
+            }
+
+
+
+            if ( user == null ){
+                vote = new Vote(req.body);
+                vote.target = bucketID;
+
+                user.voteHistory[bucketID] = vote;
+
+            }
+
+            vote = user.voteHistory[bucketID];
+
+
+            if ( vote.weight == 1 ){
+                res.send('alerady voted');
+                return;
+            }
+
+            
+
+            console.log('the weight is', vote.weight);
+
+            vote.weight = 1;
+
+            user.save(function(err){
+                if (err != null) console.log('Error: in creating the bucket');
+
+
+                api.atomicUpVoteBucket(req, res);
+
+                return;
+            });
+
+        })
+        
+    },
+
+    upVoteBucket: function(req, res) {
+        var bucketID = req.params.id;
         var update = { $inc : { upVotes : 1 } };
 
         Bucket.update({_id:bucketID}, update, function ( err, numAffected){
@@ -240,8 +300,11 @@ exports.api  = {
                 return;
             }
             res.send('success');
+            return;
         });
+        
     },
+
 
     downVoteBucket: function(req, res){
         var bucketID = req.params.id;
@@ -270,7 +333,7 @@ exports.api  = {
 
         var update = { $inc : { upVote : 1 } };
 
-        Experience.update({_id:bucketID}, update, function ( err, numAffected){
+        Experience.update({_id:experienceID}, update, function ( err, numAffected){
             if ( err != null ) {
                 console.log("Error: adding experience to bucket");
                 res.send('error');
@@ -289,7 +352,7 @@ exports.api  = {
 
         var update = { $inc : { downVotes : 1 } };
 
-        Experience.update({_id:bucketID}, update, function ( err, numAffected){
+        Experience.update({_id:experienceID}, update, function ( err, numAffected){
             if ( err != null ) {
                 console.log("Error: adding experience to bucket");
                 res.send('error');
@@ -301,6 +364,8 @@ exports.api  = {
         });
 
     },
+
+
 
 
 }

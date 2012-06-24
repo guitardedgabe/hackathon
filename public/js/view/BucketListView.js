@@ -3,6 +3,7 @@ $(function() {
 		
 		el: $("#body"),
 
+
 		initialize: function() {
 			
             this.collection.on('add',this.addOne, this)
