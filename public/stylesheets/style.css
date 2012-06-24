@@ -192,13 +192,26 @@ p {
 }
 
 #sidebar_subcontainer ul {
-
+	margin-top:10px;
 }
 
 #sidebar_subcontainer li {
 	font-family:"Muli";
 	font-weight:light;
-	list-style-images: url("../images/check.png");
+	position:relative;
+	list-style-image: url("../images/xsquare.png");
+	cursor:pointer;
+	margin-left:40px;
+}
+#sidebar_subcontainer li.active {
+	list-style-image: url("../images/xactive.png");
+}
+#sidebar_subcontainer li a {
+	position:absolute;
+	top:15px;
+	left:0;
+	text-decoration:none;
+	color:#666666;;
 }
 #breadcrumbs {
 	margin-bottom:20px;
