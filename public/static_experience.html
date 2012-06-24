@@ -76,7 +76,7 @@
 			</ul>
 		</div>
 	</div>
-	
+
 	<div id="body">
 
 		<div id="sidebar_container">
@@ -108,6 +108,7 @@
 					</div>
 					<div class="clear"></div>
 				</div>
+				<div id="sidebar_toTop">▲ Top</div>
 			</div>
 		</div>
 
@@ -132,8 +133,8 @@
 
 			<div id="experience_tabs">
 				<ul>
-					<li><h2>Add Experience</h2></li>
 					<li><h2>View Experiences</h2></li>
+					<li><h2>Add Experience</h2></li>
 				</ul>
 			</div>
 
@@ -170,10 +171,91 @@
 	                    <div id="imagePreview"><img height="100px" /></div>
 	                </form>
 	            </div>
+	            <div class="clear"></div>
         	</div>
 
 
             <div id="experience_all_container">
+				<div class="experience_container">
+					<div class="experience_votes">
+						<div class="experience_votes_score">
+							63
+						</div>
+						<div class="experience_votes_images">
+							<img src="images/upvote.png" />
+							<img src="images/downvote.png" />
+						</div>
+					</div>
+					<div class="experience_photo"> 	
+						<img src="images/party1.jpg" width="150px" />
+					</div>	
+					<div class="experience_info">
+						<div class="experience_text">
+							<p>Ma Niggggggga! I totally took your advice. It was good advice. Me and my girl Shanequarastafondasherome ascended to a higher place so many times last night. Mad respect yo.</p> 
+						</div>
+					</div>
+				</div>
+
+				<div class="experience_container">
+					<div class="experience_votes">
+						<div class="experience_votes_score">
+							63
+						</div>
+						<div class="experience_votes_images">
+							<img src="images/upvote.png" />
+							<img src="images/downvote.png" />
+						</div>
+					</div>
+					<div class="experience_photo"> 	
+						<img src="images/party1.jpg" width="150px" />
+					</div>	
+					<div class="experience_info">
+						<div class="experience_text">
+							<p>Ma Niggggggga! I totally took your advice. It was good advice. Me and my girl Shanequarastafondasherome ascended to a higher place so many times last night. Mad respect yo.</p> 
+						</div>
+					</div>
+				</div>
+
+				<div class="experience_container">
+					<div class="experience_votes">
+						<div class="experience_votes_score">
+							63
+						</div>
+						<div class="experience_votes_images">
+							<img src="images/upvote.png" />
+							<img src="images/downvote.png" />
+						</div>
+					</div>
+					<div class="experience_photo"> 	
+						<img src="images/party1.jpg" width="150px" />
+					</div>	
+					<div class="experience_info">
+						<div class="experience_text">
+							<p>Ma Niggggggga! I totally took your advice. It was good advice. Me and my girl Shanequarastafondasherome ascended to a higher place so many times last night. Mad respect yo.</p> 
+						</div>
+					</div>
+				</div>
+
+				<div class="experience_container">
+					<div class="experience_votes">
+						<div class="experience_votes_score">
+							63
+						</div>
+						<div class="experience_votes_images">
+							<img src="images/upvote.png" />
+							<img src="images/downvote.png" />
+						</div>
+					</div>
+					<div class="experience_photo"> 	
+						<img src="images/party1.jpg" width="150px" />
+					</div>	
+					<div class="experience_info">
+						<div class="experience_text">
+							<p>Ma Niggggggga! I totally took your advice. It was good advice. Me and my girl Shanequarastafondasherome ascended to a higher place so many times last night. Mad respect yo.</p> 
+						</div>
+					</div>
+				</div>
+
 				<div class="experience_container">
 					<div class="experience_votes">
 						<div class="experience_votes_score">
@@ -215,10 +297,11 @@
 					</div>
 				</div>
 			</div>
+			<div class="clear"></div>
 		</div>
 	</div>
 </body>
-
+<!--
 <script type="text/template" id="bucketView-template">
     <div class="bucket_container">
         <div class="bucket_votes">
@@ -242,7 +325,7 @@
         </div>
     </div>
 </script>
-
+-->
 <script>
 $(".bucket_votes img").live({
 	"mouseenter" : function() {
@@ -357,19 +440,19 @@ function onResize() {
 		}
 	}
 }
-$(document).ready(function() {
-	onResize();
-	$("#experience_tabs").find("li").eq(0).click();
-});
 
 
 $("#experience_tabs li").click(function() {
 	var index = $("#experience_tabs").find("li").index(this);
 	if (index == 0) {
+		$("#experience_tabs li").removeClass("active");
+		$(this).addClass("active");
 		$("#create_bucket_container").hide();
 		$("#experience_all_container").show();
 	}
 	else if (index == 1) {
+		$("#experience_tabs li").removeClass("active");
+		$(this).addClass("active");
 		$("#experience_all_container").hide();
 		$("#create_bucket_container").show();
 	}
@@ -395,7 +478,15 @@ $(".dim_social").live({
 		$(this).removeClass("dim_social_active");
 	}
 });
-$("#submitBucketPhoto").click(function(){$("#submitUserPhotoInput").click()});
 
+$("#submitBucketPhoto").click(function(){$("#submitUserPhotoInput").click()});
+$("#sidebar_toTop").click(function() {
+	$("html, body").animate({ scrollTop: 0 }, "fast");
+});
+
+$(document).ready(function() {
+	onResize();
+	$("#experience_tabs").find("li").eq(0).click();
+});
 </script>
 </html>
