@@ -4,11 +4,14 @@ $(function() {
 
         events: {
             "click #signin":"openSignInPopup",
+            "click #submit":"openSubmitPopup",
         },
 
         initialize: function(){
             this.user = new User();
             ballz = this.user;
+
+            this.submitBucketView = new SubmitBucketView({collection:this.collection});
 
             this.user.on('change',this.changeUserStatus, this);
         },
@@ -27,7 +30,11 @@ $(function() {
             $('.dim').show()
             $('.dim_background').show()
         },
+
+        openSubmitPopup: function() {
+            this.submitBucketView.render();
+        },
     });
 
-    mainPage  = new MainPage();
+    mainPage  = new MainPage({collection: buckets});
 });

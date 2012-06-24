@@ -806,6 +806,9 @@ p {
     padding-right: 8px;
 }
 
+#submitBucketError {
+    color: red;
+}
 
 /* --- /Experience Submit --- */
 
