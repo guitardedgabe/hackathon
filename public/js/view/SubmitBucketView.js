@@ -3,9 +3,9 @@ $(function() {
 		
 		el: $("#createBucket"),
 
-		/*events: {
+		events: {
 			"click #submitBucket": "submitBucket"
-		},*/
+		},
 
 		initialize: function() {
 			this.text = this.$("#bucketText");

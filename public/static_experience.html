@@ -8,8 +8,8 @@
 	<script src="lib/backbone.js"></script>
 	<script src="js/Main.js"></script>
 	<script src="js/view/BucketView.js"></script>
-	<script src="js/view/BucketListView.js"></script>
-    <script src="js/view/SubmitBucketView.js"></script>
+    <script src="js/view/BucketListView.js"></script>
+    <script src="js/view/SubmitExperienceView.js"></script>
 </head>
 <body>
 	<div class="dim_background"></div>
@@ -183,6 +183,30 @@
 		</div>
 	</div>
 </body>
+
+<script type="text/template" id="bucketView-template">
+    <div class="bucket_container">
+        <div class="bucket_votes">
+            <div class="bucket_votes_score">
+                <%= upVotes-downVotes %>
+            </div>
+            <div class="bucket_votes_images">
+                <img class="upVote" src="images/upvote.png" />
+                <img class="downVote" src="images/downvote.png" />
+            </div>
+        </div>	
+        <div class="bucket_info">
+            <div class="bucket_name"><a><h2><%= title %></h2></a></div>
+
+            <div class="bucket_photos">
+                <a href="#"><img src="images/party1.jpg" /></a>
+                <a href="#"><img src="images/party1.jpg" /></a>
+                <a href="#"><img src="images/party1.jpg" /></a>
+                <a href="#"><img src="images/party1.jpg" /></a>
+            </div>
+        </div>
+    </div>
+</script>
 
 <script>
 $(".bucket_votes img").live({
