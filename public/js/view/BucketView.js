@@ -1,13 +1,11 @@
 $(function() {
 	BucketView = Backbone.View.extend({
 		
-		tagName: "li",
-
 		template: _.template($("#bucketView-template").html()),
 
 		events: {
-			"click #upVote": "upVote",
-			"click #downVote": "downVote"
+			"click .upVote": "upVote",
+			"click .downVote": "downVote"
 		},
 
 		initialize: function() {

@@ -42,92 +42,34 @@
 		</div>
 	</div>
 	<div id="body">
-
 		<div id="body_container">
-			<div class="bucket_container">
-				<div class="bucket_votes">
-					<div class="bucket_votes_score">
-						78
-					</div>
-					<div class="bucket_votes_images">
-						<img src="images/upvote.png" />
-						<img src="images/downvote.png" />
-					</div>
-				</div>	
-				<div class="bucket_info">
-					<div class="bucket_name"><a><h2>Name of Event</h2></a></div>
-					<div class="bucket_photos">
-						<a href="#"><img src="images/party1.jpg" /></a>
-						<a href="#"><img src="images/party1.jpg" /></a>
-						<a href="#"><img src="images/party1.jpg" /></a>
-						<a href="#"><img src="images/party1.jpg" /></a>
-					</div>
-				</div>
-			</div>
-
-			<div class="bucket_container">
-				<div class="bucket_votes">
-					<div class="bucket_votes_score">
-						78
-					</div>
-					<div class="bucket_votes_images">
-						<img src="images/upvote.png" />
-						<img src="images/downvote.png" />
-					</div>
-				</div>	
-				<div class="bucket_info">
-					<div class="bucket_name"><a><h2>Name of Event</h2></a></div>
-					<div class="bucket_photos">
-						<a href="#"><img src="images/party1.jpg" /></a>
-						<a href="#"><img src="images/party1.jpg" /></a>
-						<a href="#"><img src="images/party1.jpg" /></a>
-						<a href="#"><img src="images/party1.jpg" /></a>
-					</div>
-				</div>
-			</div>
-
-			<div class="bucket_container">
-				<div class="bucket_votes">
-					<div class="bucket_votes_score">
-						78
-					</div>
-					<div class="bucket_votes_images">
-						<img src="images/upvote.png" />
-						<img src="images/downvote.png" />
-					</div>
-				</div>	
-				<div class="bucket_info">
-					<div class="bucket_name"><a><h2>Name of Event</h2></a></div>
-					<div class="bucket_photos">
-						<a href="#"><img src="images/party1.jpg" /></a>
-						<a href="#"><img src="images/party1.jpg" /></a>
-						<a href="#"><img src="images/party1.jpg" /></a>
-						<a href="#"><img src="images/party1.jpg" /></a>
-					</div>
-				</div>
-	</div>
+        </div>
+    </div>
 </body>
 
 <!-- Templates -->
 <script type="text/template" id="bucketView-template">
-	<div class="bucket_container">
-		<div class="bucket_votes">
-			<div class="bucket_votes_score"><%= upVotes-downVotes %></div>
-			<div class="bucket_votes_images">
-				<img src="images/upvote.png" id="upVote" />
-				<img src="images/downvote.png" id="downVote" />
-			</div>
-		</div>	
-		<div class="bucket_info">
-            <div class="bucket_name"><h2><%= title %></h2></div>
-			<div class="bucket_photos">
-				<!--<img src="images/party1.jpg" height="100px" />
-				<img src="images/party1.jpg" height="100px" />
-				<img src="images/party1.jpg" height="20px" />
-				<img src="images/party1.jpg" height="20px" />-->
-			</div>
-		</div>
-	</div>
+    <div class="bucket_container">
+        <div class="bucket_votes">
+            <div class="bucket_votes_score">
+                <%= upVotes-downVotes %>
+            </div>
+            <div class="bucket_votes_images">
+                <img class="upVote" src="images/upvote.png" />
+                <img class="downVote" src="images/downvote.png" />
+            </div>
+        </div>	
+        <div class="bucket_info">
+            <div class="bucket_name"><a><h2><%= title %></h2></a></div>
+
+            <div class="bucket_photos">
+                <a href="#"><img src="images/party1.jpg" /></a>
+                <a href="#"><img src="images/party1.jpg" /></a>
+                <a href="#"><img src="images/party1.jpg" /></a>
+                <a href="#"><img src="images/party1.jpg" /></a>
+            </div>
+        </div>
+    </div>
 </script>
 <!-- End Templates -->
 
