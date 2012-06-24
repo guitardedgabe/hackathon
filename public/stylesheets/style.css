@@ -311,6 +311,16 @@ h2 {
 	margin:0 auto;
 }
 
+#signinTwitter {
+    display:block;
+}
+
+#userStatus{
+    position: absolute;
+    right: 10px;
+    right 
+}
+
 
 /* --- /Dim --- */
 

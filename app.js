@@ -31,6 +31,7 @@ var UserSchema = new Schema({
 	points: Number,
 	pic: String,
 	todo: [BucketSchema],
+    voteHistory: [VoteSchema],
 	bucketsAdded: [BucketSchema]
 });
 
@@ -155,6 +156,8 @@ app.post('/api/experience/downvote/:id', routes.api.downVoteExperience);
 //user api functions
 app.get('/api/user/:id', routes.api.readUser);
 
+app.get('/api/whoami', routes.api.whoami);
+
 app.post('/api/user', routes.api.createUser);
 
 app.put('/api/user/:id', routes.api.updateUser);
@@ -191,9 +194,16 @@ var ExperienceSchema = new Schema ({
 	pictures: [String],
 	tags: [UserSchema],
 	text: String,
-	upVote: Number,
-	downVote: Number
+	upVotes: Number,
+	downVotes: Number
 });
+
+var VoteSchema = new Schema ({
+    target: Schema.ObjectId,
+    weight: Number
+});
+
+Vote = mongoose.model('Vote', VoteSchema);
 
 Experience = mongoose.model('Experience', ExperienceSchema);
 

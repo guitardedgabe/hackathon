@@ -11,28 +11,29 @@ $(function() {
             //load user model from the given options
             this.user = this.options.user;
 
-			this.text = this.$("#bucketText");
-			this.title = this.$("#bucketTitle");
-			this.category = this.$("#bucketCategory");
-			this.picture = this.$("#photoUpload");
+			this.text = this.$("#bucketText input");
+			this.title = this.$("#bucketTitle input");
+			this.category = this.$("#bucketCategory input");
+			this.picture = this.$("#imagePreview img");
 		},
 
 		submitBucket: function() {
-			var bucketOptions = new Bucket();
+
+			bucketOptions = {};
 			bucketOptions.text = this.text.val();
 			bucketOptions.title = this.title.val();
 			bucketOptions.category = this.category.val();
 			bucketOptions.pictures = [this.picture.attr('src')];
 
-			//bucketOptions = selected picture
-			//bucketOptions.author = user.get("name");
-            
-			bucketOptions.author = this.user.id;
+            console.log('bucket options are', bucketOptions);
 
 			this.collection.create(bucketOptions);
             
 		}
 
 	});
+
+    var buckets =  new BucketList();
+    submitView = new SubmitBucketView({collection:buckets});
 
 });

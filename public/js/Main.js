@@ -59,7 +59,6 @@ $(function() {
             var model = this.model;
             $.get('/api/experience/upvote/'+this.id, function(data){
                 console.log('upvoted post the data returned was',data);
-                model.fetch();
             });
 
         },
@@ -68,7 +67,6 @@ $(function() {
             var model = this.model;
             $.get('/api/experience/downvote/'+this.id, function(data){
                 console.log('downvoted post the data returned was',data);
-                model.fetch();
             });
         }
     });
@@ -129,7 +127,6 @@ $(function() {
             //this.save({ 'upVotes': this.upVotes + 1});
             var model = this;
             $.get('/api/bucket/upvote/'+this.id, function(data){
-                model.fetch();
             });
 
         },
@@ -139,13 +136,19 @@ $(function() {
             var model = this;
             $.get('/api/bucket/downvote/'+this.id, function(data){
                 console.log('downvoted post the data returned was',data);
-                model.fetch();
             });
         }
 
     });
    
     User = Backbone.Model.extend({
+
+        url:function(){
+            if(this.id) {
+                return 'api/user/'+this.id;
+            }
+            return 'api/user';
+        },
         
         defaults: function() {
 			return {
@@ -163,6 +166,17 @@ $(function() {
             if (!this.get('points')) {
                 this.save({ 'points': this.defaults.points });
             }
+
+            //get user from server using cookies
+            this.getUserFromServer();
+
+        },
+
+        getUserFromServer: function(){
+            var model = this;
+            $.get('/api/whoami', function(data){
+                model.set(data);
+            });
         },
         
         addPoints: function(points) {
