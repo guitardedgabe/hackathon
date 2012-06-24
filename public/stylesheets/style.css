@@ -77,6 +77,12 @@ h3 {
 	font-size:18px;
 	color:#666666;
 }
+p {
+	font-family:"Muli";
+	font-weight:light;
+	font-size:14px;
+	line-height:18px;
+}
 /* --- /Main Style --- */
 
 
@@ -214,8 +220,8 @@ h3 {
 #experience_info p {
 	font-family:"Muli";
 	font-weight:light;
-	font-size:12px;
-	line-height:1.5em;
+	font-size:14px;
+	line-height:18px;
 }
 #experience_info span {
 	font-family:"Muli";
