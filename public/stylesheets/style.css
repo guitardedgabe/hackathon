@@ -160,11 +160,6 @@ p {
 	border:0;
 }
 
-#signin {
-    position: absolute;
-    right: 10px;
-}
-
 /* --- /Header --- */
 
 
@@ -264,6 +259,10 @@ p {
 
 
 
+
+
+
+
 /* --- Dim --- */
 
 .dim_background{
@@ -351,16 +350,6 @@ p {
 }
 .dim_social img {
 	margin:0 auto;
-}
-
-#signinTwitter {
-    display:block;
-}
-
-#userStatus{
-    position: absolute;
-    right: 10px;
-    right 
 }
 
 
@@ -484,6 +473,10 @@ p {
 
 
 
+
+
+
+
 /* --- Experiences --- */
 
 #experience_header {
@@ -570,19 +563,147 @@ p {
 	display:inline-block;
 }
 
+#experience_all_container {
+	display:none;
+}
+
 /* --- /Experiences --- */
 
 
 
 
+
+
+#experience_tabs {
+
+}
+
+#experience_tabs ul {
+	margin-left:20px;
+}
+
+#experience_tabs li {
+	display:inline-block;
+	cursor:pointer;
+	background:#333;
+	padding:10px 20px;
+}
+
+
 /* --- Bucket Submit --- */
 
 
+#submitTitle {
+	height: 60px;
+	width: 100%;
+	text-align: left;
+}
+
+#submitTitleInput {
+	height: 60px;
+	width: 100%;
+	border-radius: 10px;
+	border: 1px solid gray;
+	font-family:"Amaranth";
+	font-size: 200%;
+	padding: 10px;
+}
+
+#submitTextContainer {
+	width: 300px;
+	height: 120px;
+	margin-top:20px;
+}
+
+#submitTextInput {
+    position: absolute;
+    padding: 10px;
+	border-radius: 10px;
+    box-shadow: inset 0px 2px 3px #58595B;
+    border: 0;
+	width: 300px;
+	height: 120px;
+	font-family:"Muli";
+	font-size: 14px;
+    line-height: 18px;
+	text-wrap: normal;
+}
+
+#submitPhotoUpload {
+	width:152px;
+	height:134px;
+	position:relative;
+	overflow:hidden;
+	margin:20px auto;
+
+}
+
+#submitBucketPhoto {
+	padding:6px 16px;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:7;
+	background:#F0F0ED;
+	box-shadow: 0px 2px 0px #bcbec0;
+	background-image:url('../images/upload-photo.jpg');
+    background-size: 100% 100%;
+	background-repeat:no-repeat;
+	background-position-x:2px;
+	background-position-y:6px;
+	text-align:center;
+	cursor:pointer;
+	width:120px;
+	height:120px;
+	border-radius:10px;
+}
+
+#submitBucketPhoto:hover {
+	box-shadow: 0px 2px 5px #bcbec0 inset;
+	background-image:url('../images/upload-photo-hover.jpg');
+}
+
+#submitUserPhotoInput {
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:6;
+}
+
+#submitBucket {
+    position: absolute;
+    border-radius: 10px;
+    right: 0px;
+    bottom: 0;
+    width: 80px;
+    height: 40px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+
+/* --- /Bucket Submit --- */
+
+
+
+
+
+
+/* --- Experience Submit --- */
+
+
+#create_bucket_container {
+	display:none;
+}
+
 #createBucket {
-    position: relative;
 	height: 320px;
-	width: 600px;
-    left: 160px;
+	width: 690px;
+	position:relative;
+	margin-left:160px;
+	
 }
 
 #bucketTitleContainer {
@@ -606,7 +727,8 @@ p {
 	border-radius: 10px;
 	border: 1px solid gray;
 	font-family:"Amaranth";
-	font-size: 200%;
+	font-size:28px;
+	padding:0 5px;
 }
 
 #bucketInfoContainer {
@@ -685,7 +807,7 @@ p {
 }
 
 
-/* --- /Bucket Submit --- */
+/* --- /Experience Submit --- */
 
 
 
